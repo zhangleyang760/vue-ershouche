@@ -18,7 +18,7 @@ export default new Router({
       name:'houtai1',
       component:houtai1
     },{
-    path:'/updatehoutai1/:id',
+    path:'/updatehoutai1/:sid',
       name:'updatehoutai1',
       component:updatehoutai1
     }

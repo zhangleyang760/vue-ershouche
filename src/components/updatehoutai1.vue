@@ -34,9 +34,9 @@
           }
       },
     mounted(){
-          var id=this.$route.params.id
+          var id=this.$route.params.sid
           var url='api/findBySellerId'
-      axios.post(url,{id:id}).then(res=>{
+      axios.post(url,{sid:sid}).then(res=>{
           if (res.data!=null){
               this.seller=res.data();
           }

@@ -61,9 +61,9 @@
         label="邮箱">
       </el-table-column>
       <el-table-column label="操作" >
-        <template slot-scope="users">
-          <el-button type="danger" round @click="todelete(users.row.id)" size="small">删除</el-button>
-          <el-button type="danger" round @click="toupdate(users.row.id)" size="small">修改</el-button>
+        <template slot-scope="seller">
+          <el-button type="danger" round @click="todelete(seller.row.sid)" size="small">删除</el-button>
+          <el-button type="danger" round @click="toupdate(seller.row.sid)" size="small">修改</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -90,18 +90,18 @@
 
           })
     },
-      toupdate:function (id) {
-        this.$router.push('/updatehoutai1/'+id)
+      toupdate:function (sid) {
+        this.$router.push('/updatehoutai1/'+sid)
       },
 
-      todelete: function (id) {
+      todelete: function (sid) {
         this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
           var url = "api/deleteSeller"
-          axios.post(url, {id: id}).then(res => {
+          axios.post(url, {sid: sid}).then(res => {
             this.query();
           })
 
