@@ -4,6 +4,7 @@ import Router from 'vue-router'
 import userinfo from '@/components/userinfo'
 import houtai1 from '@/components/houtai1'
 import updatehoutai1 from '@/components/updatehoutai1'
+import userReg from '@/components/userReg'
 
 Vue.use(Router)
 
@@ -21,6 +22,11 @@ export default new Router({
     path:'/updatehoutai1/:sid',
       name:'updatehoutai1',
       component:updatehoutai1
+    },
+    {
+      path:'/userReg',
+      name:'userReg',
+      component:userReg
     }
 
   ]
