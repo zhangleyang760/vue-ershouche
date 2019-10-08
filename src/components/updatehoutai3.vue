@@ -9,11 +9,12 @@
     颜色：<el-input  v-model="car.color" placeholder="请输入姓名"></el-input>
     描述：<el-input  v-model="car.miaoshu" placeholder="请输入姓名"></el-input>
 
-
+    <el-button type="primary" @click="update()">修改</el-button>
   </div>
 </template>
-import axios from 'axios'
+
 <script>
+  import axios from 'axios'
   export default{
     data(){
         return{
@@ -29,6 +30,23 @@ import axios from 'axios'
               miaoshu:'',
             }
         }
+    },
+    mounted(){
+        var cid=this.$route.cid
+      var url='api/findCarId'
+      axios.post(url,{cid:cid}).then(res=>{
+          this.car=res.data;
+      })
+    },
+    methods:{
+        update:function () {
+          var url='api/updateCar'
+          axios.post(url).then(res=>{
+              this.$router.push({name:'houtai3'})
+          })
+        }
+
+
     }
   }
 </script>
