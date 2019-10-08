@@ -1,18 +1,16 @@
 <template>
   <div id="contain">
-    <div id="lay1">
-      引用首页顶部
-    </div>
+
     <div id="lay2" align="center">
       <div id="left" >
         <div id="L_lay1">
-          <div id="lab1" >个人信息</div>
-          <div id="username" class="ROW">姓名</div>
-          <div id="userphone" class="ROW">电话</div>
-          <div id="provice" class="ROW">省份</div>
-          <div id="city" class="ROW">城市</div>
-          <div id="sex" class="ROW">性别</div>
-          <div id="email" class="ROW">邮件</div>
+          <div id="lab1" >PERSONAL INFORMATION</div>
+          <div id="username" class="ROW">USERNAME</div>
+          <div id="userphone" class="ROW">PHONE</div>
+          <div id="provice" class="ROW">PROVICE</div>
+          <div id="city" class="ROW">CITY</div>
+          <div id="sex" class="ROW">SEX</div>
+          <div id="email" class="ROW">EMAIL</div>
         </div>
       </div>
       <div id="right">
@@ -42,9 +40,7 @@
         </div>
       </div>
     </div>
-    <div id="bottom">
-      引用首页底部
-    </div>
+
   </div>
 </template>
 <script>
@@ -52,7 +48,9 @@
   export default{
     data(){
       return{
-        users:[],
+        users:{
+            sname:''
+        }
 
       }
     },
@@ -60,7 +58,7 @@
       this.query();
     },methods:{
       query:function () {
-        var url='api/findBuyer'
+        var url='api/findCustomer'
         axios.get(url).then(res=>{
           this.users=res.data.list;
         })
@@ -69,11 +67,7 @@
   }
 </script>
 <style>
-  #lay1{
-    background-color: aquamarine;
-    width: 1349px;
-    height: 20px;
-  }
+
   #lay2{
     width:1100px;
     height: 500px;
@@ -112,9 +106,5 @@
     height: 250px;
     float: left;
   }
-  #bottom{
-    background-color: yellow;
-    width: 1349px;
-    height: 20px;
-  }
+
 </style>
