@@ -1,7 +1,7 @@
 <template>
 
   <div>
-    <h1>买家家信息管理</h1>
+    <h1>买家信息管理</h1>
     <el-table
       :data="customer"
       stripe
