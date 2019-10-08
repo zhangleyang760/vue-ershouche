@@ -7,13 +7,14 @@ import updatehoutai1 from '@/components/updatehoutai1'
 import userReg from '@/components/userReg'
 import houtai2 from '@/components/houtai2'
 import updatehoutai2 from '@/components/updatehoutai2'
+import index from '@/components/index'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
    {
-    path:"/",
+    path:"/userinfo",
     name:'userinfo',
     component:userinfo
     },{
@@ -37,7 +38,12 @@ export default new Router({
       path:'/updatehoutai2/:bid',
       name:'updatehoutai2',
       component:updatehoutai2
-    }
+    },
+    {
+      path:'/',
+      name:'index',
+      component:index
+    },
 
   ]
 })
