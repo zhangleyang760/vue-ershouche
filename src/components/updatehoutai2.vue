@@ -1,14 +1,14 @@
 <template>
   <div>
-    买家姓名：<el-input  v-model="customer.bname" placeholder="请输入密码"></el-input>
-    买家账号：<el-input  v-model="customer.username" placeholder="请输入邮箱"></el-input>
-    买家密码：<el-input  v-model="customer.password" placeholder="请输入密码"></el-input>
-    省份：<el-input  v-model="customer.provice" placeholder="请输入密码"></el-input>
-    城市：<el-input  v-model="customer.city" placeholder="请输入密码"></el-input>
-    身份证号：<el-input  v-model="customer.idcard" placeholder="请输入密码"></el-input>
-    手机号：<el-input  v-model="customer.phone" placeholder="请输入密码"></el-input>
-    性别：<el-input  v-model="customer.sex" placeholder="请输入密码"></el-input>
-    邮箱：<el-input  v-model="customer.email" placeholder="请输入密码"></el-input>
+    买家姓名：<el-input  v-model="seller.sname" placeholder="请输入密码"></el-input>
+    买家账号：<el-input  v-model="seller.username" placeholder="请输入邮箱"></el-input>
+    卖家密码：<el-input  v-model="seller.password" placeholder="请输入密码"></el-input>
+    省份：<el-input  v-model="seller.provice" placeholder="请输入密码"></el-input>
+    城市：<el-input  v-model="seller.city" placeholder="请输入密码"></el-input>
+    身份证号：<el-input  v-model="seller.idcard" placeholder="请输入密码"></el-input>
+    手机号：<el-input  v-model="seller.phone" placeholder="请输入密码"></el-input>
+    性别：<el-input  v-model="seller.sex" placeholder="请输入密码"></el-input>
+    邮箱：<el-input  v-model="seller.email" placeholder="请输入密码"></el-input>
     <el-button type="primary" @click="update()">修改</el-button>
   </div>
 </template>
@@ -17,8 +17,8 @@
   export default{
       data(){
           return{
-              customer:{
-                  bid:'',
+              seller:{
+                  sid:'',
                 bname:'',
                 username:'',
                 password:'',
@@ -32,9 +32,9 @@
           }
       },
     mounted(){
-          var id=this.$route.params.bid
-          var url='api/findByCustomer'
-      axios.post(url,{bid:bid}).then(res=>{
+          var sid=this.$route.params.sid
+          var url='api/findBySeller'
+      axios.post(url,{sid:sid}).then(res=>{
           if (res.data!=null){
               this.customer=res.data();
           }
@@ -42,8 +42,8 @@
     },
     methods:{
         update:function () {
-          var url='api/updateCustomer'
-          axios.post(url,this.customer).then(res=>{
+          var url='api/updateSeller'
+          axios.post(url,this.seller).then(res=>{
               this.$touter.push({name:'houtai2'})
           })
         },
