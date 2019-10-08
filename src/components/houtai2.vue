@@ -3,6 +3,7 @@
   <div>
 
     <h1>买家信息管理</h1><el-button type="success" round @click="tohoutai1" size="small">卖家管理</el-button>
+    <el-button type="success" round @click="tohoutai3" size="small">商品管理</el-button>
     <el-table
       :data="customer"
       stripe
@@ -117,6 +118,9 @@
       },
       tohoutai1:function () {
         this.$router.push({name:'houtai1'})
+      },
+      tohoutai3:function () {
+        this.$router.push({name:'houtai3'})
       }
   }
   }
