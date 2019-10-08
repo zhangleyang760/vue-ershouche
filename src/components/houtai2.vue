@@ -16,7 +16,7 @@
 
 
       <el-table-column
-        prop="bname"
+        prop="sname"
         label="卖家姓名"
         width="80">
       </el-table-column>
@@ -61,8 +61,8 @@
       </el-table-column>
       <el-table-column label="操作" >
         <template slot-scope="seller">
-          <el-button type="danger" round @click="todelete(seller.row.sid)" size="small">删除</el-button>
-          <el-button type="danger" round @click="toupdate(seller.row.sid)" size="small">修改</el-button>
+          <el-button type="danger" round @click="todelete(seller.row.sid)" size="small"><i class="el-icon-delete"></i></el-button>
+          <el-button type="danger" round @click="toupdate(seller.row.sid)" size="small"><i class="el-icon-edit"></i></el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -79,7 +79,7 @@
           }
       },
     moutend(){
-
+      this.query();
     },
     methods:{
         query:function () {

@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h1>卖家信息修改</h1>
     车id ：<el-input v-model="seller.cid" placeholder="请输入账号"></el-input>
     卖家姓名：<el-input  v-model="seller.sname" placeholder="请输入密码"></el-input>
     卖家账号：<el-input  v-model="seller.username" placeholder="请输入邮箱"></el-input>

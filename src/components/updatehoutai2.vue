@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h1>买家信息修改</h1>
     买家姓名：<el-input  v-model="seller.sname" placeholder="请输入密码"></el-input>
     买家账号：<el-input  v-model="seller.username" placeholder="请输入邮箱"></el-input>
     卖家密码：<el-input  v-model="seller.password" placeholder="请输入密码"></el-input>
