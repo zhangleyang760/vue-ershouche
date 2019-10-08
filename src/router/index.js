@@ -10,6 +10,7 @@ import updatehoutai2 from '@/components/updatehoutai2'
 import upload from '@/components/upload'
 import houtai3 from '@/components/houtai3'
 import updatehoutai3 from '@/components/updatehoutai3'
+import userlogin from '@/components/userlogin'
 Vue.use(Router)
 
 export default new Router({
@@ -31,6 +32,11 @@ export default new Router({
       path:'/userReg',
       name:'userReg',
       component:userReg
+    },{
+
+      path:'/userlogin',
+      name:'userlogin',
+      component:userlogin
     },{
       path:'/houtai2',
       name:'houtai2',
