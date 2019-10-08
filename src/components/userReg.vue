@@ -9,22 +9,22 @@
         <el-button type="primary" @click="getcode()">获取验证码</el-button>
       </el-form-item><br>
       <el-form-item label="真实姓名：">
-        <el-input v-model="user.username" placeholder="请输入您的真实姓名"></el-input>
+        <el-input v-model="user.sname" placeholder="请输入您的真实姓名"></el-input>
       </el-form-item><br>
       <el-form-item label="身份证号：">
-        <el-input v-model="user.username" placeholder="请输入您的身份证号"></el-input>
+        <el-input v-model="user.idcard" placeholder="请输入您的身份证号"></el-input>
       </el-form-item><br>
       <el-form-item label="性别：">
-        <el-input v-model="user.username" placeholder="请输入您的性别：男或女"></el-input>
+        <el-input v-model="user.sex" placeholder="请输入您的性别：男或女"></el-input>
       </el-form-item><br>
       <el-form-item label="所在省份：">
-        <el-input v-model="user.username" placeholder="请输入所在省份"></el-input>
+        <el-input v-model="user.provice" placeholder="请输入所在省份"></el-input>
       </el-form-item><br>
       <el-form-item label="所在城市：">
-        <el-input v-model="user.username" placeholder="请输入所在城市"></el-input>
+        <el-input v-model="user.city" placeholder="请输入所在城市"></el-input>
       </el-form-item><br>
       <el-form-item label="手机号：">
-        <el-input v-model="user.username" placeholder="请输入手机号"></el-input>
+        <el-input v-model="user.phone" placeholder="请输入手机号"></el-input>
       </el-form-item><br>
       <el-form-item label="账户名：">
         <el-input v-model="user.username" placeholder="请输入用户名"></el-input>
@@ -36,8 +36,7 @@
         <el-input v-model="user.code" placeholder="请输入验证码"></el-input>
       </el-form-item><br>
       <el-form-item>
-        <el-button type="primary" @click="sellersubmit()">卖家注册</el-button>
-        <el-button type="primary" @click="">买家注册</el-button>
+        <el-button type="primary" @click="submit()">注册</el-button>
       </el-form-item>
     </el-form>
 
@@ -54,13 +53,19 @@
           email:'',
           username:'',
           password:'',
+          sname:'',
+          provice:'',
+          city:'',
+          phone:'',
+          idcard:'',
+          sex:'',
           code:''
         }
       }
     },
     methods:{
-      sellersubmit:function () {
-        var url='/api/register'
+     submit:function () {
+        var url='/api/sellerregister'
         axios.post(url,this.user).then(res=>{
           // alert(res.data)
           if (res.data!=null){
@@ -71,6 +76,7 @@
             this.$router.push({name:'userReg'});
           }
         })
+      }
       },
       getcode:function () {
         var url='/api/sendEmail'
@@ -82,7 +88,6 @@
       fun:function () {
 
       }
-    }
   }
 </script>
 <style>
