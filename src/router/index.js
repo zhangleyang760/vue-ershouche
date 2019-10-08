@@ -5,6 +5,7 @@ import userinfo from '@/components/userinfo'
 import houtai1 from '@/components/houtai1'
 import updatehoutai1 from '@/components/updatehoutai1'
 import userReg from '@/components/userReg'
+import userlogin from '@/components/userlogin'
 import houtai2 from '@/components/houtai2'
 import updatehoutai2 from '@/components/updatehoutai2'
 import index from '@/components/index'
@@ -30,6 +31,11 @@ export default new Router({
       path:'/userReg',
       name:'userReg',
       component:userReg
+    },{
+
+      path:'/',
+      name:'userlogin',
+      component:userlogin
     },{
       path:'/houtai2',
       name:'houtai2',
