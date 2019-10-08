@@ -92,6 +92,32 @@
       tohoutai2:function () {
         this.$router.push({name:'houtai2'})
       },
+      toupdate:function (cid) {
+        this.$router.push('/updatehoutai3/'+cid)
+      },
+      todelete: function (cid) {
+        this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          var url = "api/deleteSeller"
+          axios.post(url, {sid: cid}).then(res => {
+            this.query();
+          })
+
+
+          this.$message({
+            type: 'success',
+            message: '删除成功!'
+          });
+        }).catch(() => {
+          this.$message({
+            type: 'info',
+            message: '已取消删除'
+          });
+        });
+      },
     }
   }
 </script>
