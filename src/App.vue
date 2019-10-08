@@ -28,7 +28,7 @@ export default {
     top:0px;
   }
   #head{
-    width: 1506.4px;
+    width: 1519.4px;
     height: 36px;
     line-height: 36px;
     background: #fff;
@@ -36,7 +36,7 @@ export default {
     border-bottom: 1px solid #ddd;
   }
   #headin{
-    margin-left: 900px;
+    margin-left: 975px;
   }
   .headtap{
     float: left;
