@@ -1,7 +1,8 @@
 <template>
 
   <div>
-    <h1>买家信息管理</h1>
+
+    <h1>买家信息管理</h1><el-button type="success" round @click="tohoutai1" size="small">卖家管理</el-button>
     <el-table
       :data="customer"
       stripe
@@ -114,6 +115,9 @@
           });
         });
       },
+      tohoutai1:function () {
+        this.$router.push({name:'houtai1'})
+      }
   }
   }
 
