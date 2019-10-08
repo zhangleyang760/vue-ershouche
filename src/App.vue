@@ -3,12 +3,12 @@
     <div>
       <div id="head">
         <div id="headin">
-          <div class="head"><a href="userlogin.vue">登录</a>|<a href="userReg.vue">注册</a> </div>
-          <div class="head"><a href="userinfo.vue">个人中心</a> </div>
-          <div class="head"><a href="">商家中心</a> </div>
-          <div class="head"><a href="">帮助中心</a> </div>
-          <div class="head"><a href="">联系客服</a> </div>
-          <div class="head"><a href="">网站导航</a> </div>
+          <div class="headtap"><a href="userlogin.vue">登录</a>|<a href="userReg.vue">注册</a> </div>
+          <div class="headtap"><a href="userinfo.vue">个人中心</a> </div>
+          <div class="headtap"><a href="">商家中心</a> </div>
+          <div class="headtap"><a href="">帮助中心</a> </div>
+          <div class="headtap"><a href="">联系客服</a> </div>
+          <div class="headtap"><a href="">网站导航</a> </div>
         </div>
       </div>
     </div>
@@ -28,9 +28,7 @@ export default {
     top:0px;
   }
   #head{
-    position:relative;
-    top: 0px;
-    width: 100%;
+    width: 1506.4px;
     height: 36px;
     line-height: 36px;
     background: #fff;
@@ -40,7 +38,7 @@ export default {
   #headin{
     margin-left: 900px;
   }
-  .head{
+  .headtap{
     float: left;
     margin-right: 13px;
   }
