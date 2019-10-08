@@ -35,7 +35,7 @@ export default new Router({
       component:userReg
     },{
 
-      path:'/',
+      path:'/userlogin',
       name:'userlogin',
       component:userlogin
     },{
