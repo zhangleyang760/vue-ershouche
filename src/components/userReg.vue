@@ -65,7 +65,7 @@
     },
     methods:{
      submit:function () {
-        var url='/api/sellerregister'
+        var url='/api/register'
         axios.post(url,this.user).then(res=>{
           // alert(res.data)
           if (res.data!=null){
