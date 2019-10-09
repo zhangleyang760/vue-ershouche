@@ -76,18 +76,16 @@
             this.$router.push({name:'userReg'});
           }
         })
-      }
       },
       getcode:function () {
+        //alert("123456789")
         var url='/api/sendEmail'
         axios.post(url,this.user).then(res=>{
-         alert(res.data)
+          //alert(res.data)
         })
 
-      },
-      fun:function () {
+      } }
 
-      }
   }
 </script>
 <style>

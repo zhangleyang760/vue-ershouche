@@ -60,8 +60,8 @@
       </el-table-column>
       <el-table-column label="操作" >
         <template slot-scope="car">
-          <el-button type="danger" round @click="todelete(car.row.cid)" size="small">删除</el-button>
-          <el-button type="danger" round @click="toupdate(car.row.cid)" size="small">修改</el-button>
+          <el-button type="danger" round @click="todelete(car.row.cid)" size="small"><i class="el-icon-delete"></i></el-button>
+          <el-button type="danger" round @click="toupdate(car.row.cid)" size="small"><i class="el-icon-edit"></i></el-button>
         </template>
       </el-table-column>
     </el-table>
