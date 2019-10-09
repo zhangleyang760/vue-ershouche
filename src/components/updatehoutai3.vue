@@ -9,7 +9,10 @@
     里程：<el-input  v-model="car.mileage" ></el-input>
     颜色：<el-input  v-model="car.color" ></el-input>
     描述：<el-input  v-model="car.miaoshu"></el-input>
-    展示图：<el-input  v-model="car.pic"></el-input>
+    展示图：<el-image
+    style="width: 100px; height: 100px"
+    :src="car.pic"></el-image>
+
     <el-button type="primary" @click="update()">修改</el-button>
   </div>
 </template>
@@ -29,7 +32,8 @@
               color:'',
               pic:'',
               miaoshu:'',
-            }
+            },
+
         }
     },
     mounted(){
@@ -45,7 +49,9 @@
           axios.post(url,this.car).then(res=>{
               this.$router.push({name:'houtai3'})
           })
-        }
+        },
+
+
 
 
     }

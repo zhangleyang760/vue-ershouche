@@ -55,8 +55,12 @@
         width="80">
       </el-table-column>
       <el-table-column
+        prop="pic"
         label="图片"
         width="120">
+        <template slot-scope="car">
+          <img :src="car.row.pic" width="100" height="60">
+        </template>
       </el-table-column>
       <el-table-column label="操作" >
         <template slot-scope="car">
@@ -81,7 +85,7 @@
     },
     methods:{
           query:function () {
-            var url='/api/findCarAll'
+            var url='api/findCarAll'
             axios.get(url).then(res=>{
                 this.car=res.data;
             })

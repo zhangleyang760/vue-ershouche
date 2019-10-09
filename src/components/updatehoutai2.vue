@@ -19,7 +19,6 @@
       data(){
           return{
               seller:{
-                  sid:'',
                 bname:'',
                 username:'',
                 password:'',
@@ -34,10 +33,10 @@
       },
     mounted(){
           var sid=this.$route.params.sid
-          var url='api/findBySeller'
+          var url='api/findBySellerId'
       axios.post(url,{sid:sid}).then(res=>{
           if (res.data!=null){
-              this.customer=res.data();
+              this.seller=res.data;
           }
       })
     },
@@ -45,7 +44,7 @@
         update:function () {
           var url='api/updateSeller'
           axios.post(url,this.seller).then(res=>{
-              this.$touter.push({name:'houtai2'})
+            this.$router.push({name:'houtai2'})
           })
         },
     }

@@ -8,16 +8,10 @@
       :data="seller"
       stripe
       style="width: 100%">
-      <el-table-column
-        prop="sid"
-        label="sid"
-        width="80">
-      </el-table-column>
-
 
       <el-table-column
         prop="sname"
-        label="卖家姓名"
+        label="买家姓名"
         width="80">
       </el-table-column>
       <el-table-column
@@ -43,21 +37,22 @@
       <el-table-column
         prop="phone"
         label="手机号"
-        width="80">
+        width="120">
       </el-table-column>
       <el-table-column
         prop="idcard"
         label="身份证"
-        width="80">
+        width="220">
       </el-table-column>
       <el-table-column
         prop="sex"
         label="性别"
-        width="80">
+        width="50">
       </el-table-column>
       <el-table-column
         prop="email"
-        label="邮箱">
+        label="邮箱"
+        width="180">
       </el-table-column>
       <el-table-column label="操作" >
         <template slot-scope="seller">
@@ -78,19 +73,18 @@
               seller:[]
           }
       },
-    moutend(){
+    mounted(){
       this.query();
     },
     methods:{
-        query:function () {
-          var url="api/findCustomer"
-          axios.get(url).then(res=> {
-            this.seller = res.data;
-
-          })
-    },
+      query:function () {
+        var url='api/findCustomer'
+        axios.get(url).then(res=>{
+          this.seller=res.data;
+        })
+      },
       toupdate:function (sid) {
-        this.$router.push('/updatehoutai1/'+sid)
+        this.$router.push('/updatehoutai2/'+sid)
       },
 
       todelete: function (sid) {
