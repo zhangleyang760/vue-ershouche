@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>用户登录</h1><br>
+    <h1>后台登录</h1><br>
     <el-form :inline="true" :model="user" class="demo-form-inline">
 
       <el-form-item label="账户名：">
@@ -11,7 +11,6 @@
       </el-form-item><br>
       <el-form-item>
         <el-button type="primary" round @click="submit()">登录</el-button>
-        <el-button type="primary" round @click="toinsert()">注册</el-button>
       </el-form-item>
 
     </el-form>
@@ -31,7 +30,7 @@ import axios from "axios"
       },
     methods:{
           submit:function () {
-            var url='/api/login'
+            var url='/api/adminlogin'
             axios.post(url,this.user).then(res=>{
               // alert(res.data)
                 if (res.data!=null&&res.data=="登录成功"){
@@ -41,10 +40,7 @@ import axios from "axios"
                   this.$router.push({name:'HelloWorld'});
                 }
             })
-          },
-      toinsert:function () {
-        this.$router.push("/userReg")
-      }
+          }
     }
   }
 </script>
