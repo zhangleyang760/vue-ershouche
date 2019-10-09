@@ -1,6 +1,7 @@
 <template>
   <div>
     <h1>商品信息修改</h1>
+
     车：<el-input  v-model="car.cname" ></el-input>
     品牌：<el-input  v-model="car.brand" ></el-input>
     类型：<el-input  v-model="car.ctype" ></el-input>
@@ -9,11 +10,10 @@
     里程：<el-input  v-model="car.mileage" ></el-input>
     颜色：<el-input  v-model="car.color" ></el-input>
     描述：<el-input  v-model="car.miaoshu"></el-input>
-    展示图：<el-image
-    style="width: 100px; height: 100px"
-    :src="car.pic"></el-image>
-
+    展示图：<el-image style="width: 100px; height: 100px" :src="car.pic"></el-image>
+    <input type="file" name="file"/><br>
     <el-button type="primary" @click="update()">修改</el-button>
+
   </div>
 </template>
 
