@@ -1,19 +1,19 @@
 <template>
-  <div>
-    <h1>商品管理</h1>
+  <div id="car">
+    <div id="tou">
+      <h1>商品管理</h1>
     <el-button type="success" round @click="tohoutai2" size="small">买家管理</el-button>
-    <el-button type="success" round @click="tohoutai1" size="small">卖家管理</el-button>
+    <el-button type="success" round @click="tohoutai1" size="small">卖家管理</el-button></div>
     <el-table
       :data="car"
       stripe
-      style="width: 100%">
+      style="width: 100%"
+      :row-class-name="tableRowClassName">
       <el-table-column
         prop="cid"
         label="cid"
         width="80">
       </el-table-column>
-
-
       <el-table-column
         prop="cname"
         label="车"
@@ -31,13 +31,13 @@
       </el-table-column>
       <el-table-column
         prop="price"
-        label="价格"
+        label="价格(万)"
         width="80">
       </el-table-column>
       <el-table-column
         prop="mileage"
-        label="里程"
-        width="80">
+        label="里程(万公里）"
+        width="110">
       </el-table-column>
       <el-table-column
         prop="cyear"
@@ -52,7 +52,7 @@
       <el-table-column
         prop="miaoshu"
         label="描述"
-        width="80">
+        width="180">
       </el-table-column>
       <el-table-column
         prop="pic"
@@ -78,7 +78,23 @@
     </el-pagination>
   </div>
 </template>
+<style>
+  #car{
+   margin: 0 auto;
+    text-align: center;
+    background-color: cornsilk;
+  }
+  #tou{
+    background-color: cornsilk;
+  }
+  .el-table .warning-row {
+    background: oldlace;
+  }
 
+  .el-table .success-row {
+    background: #f0f9eb;
+  }
+</style>
 <script>
   import axios from 'axios'
   export default{
@@ -96,8 +112,16 @@
       this.query();
     },
     methods:{
+      tableRowClassName({row, rowIndex}) {
+        if (rowIndex === 1) {
+          return 'warning-row';
+        } else if (rowIndex === 3) {
+          return 'success-row';
+        }
+        return '';
+      },
           query:function () {
-            var url='api/findCarAll' + this.params.page + "/" + this.params.size
+            var url='api/findCarAll/' + this.params.page + "/" + this.params.size
             axios.get(url).then(res=>{
                 this.car=res.data.list;
                 this.total=res.data.total;

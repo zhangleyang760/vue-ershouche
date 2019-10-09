@@ -1,9 +1,9 @@
 <template>
 
-  <div>
-
+  <div id="customer">
+    <div id="tou">
     <h1>买家信息管理</h1><el-button type="success" round @click="tohoutai1" size="small">卖家管理</el-button>
-    <el-button type="success" round @click="tohoutai3" size="small">商品管理</el-button>
+    <el-button type="success" round @click="tohoutai3" size="small">商品管理</el-button></div>
     <el-table
       :data="seller"
       stripe
@@ -64,7 +64,15 @@
   </div>
 
 </template>
-
+<style>
+  #customer{
+    margin: 0 auto;
+    text-align: center;
+  }
+  #tou{
+    margin-top: 100px;
+  }
+</style>
 <script>
   import axios from 'axios'
   export default{

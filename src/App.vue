@@ -9,6 +9,7 @@
           <div class="headtap"><a href="">帮助中心</a> </div>
           <div class="headtap"><a href="">联系客服</a> </div>
           <div class="headtap"><a href="">网站导航</a> </div>
+          <div class="headtap"><a href="adminlogin.vue">后台管理</a> </div>
         </div>
       </div>
     </div>
@@ -28,7 +29,7 @@ export default {
     top:0px;
   }
   #head{
-    width: 1519.4px;
+    width:100%;
     height: 36px;
     line-height: 36px;
     background: #fff;
@@ -36,7 +37,7 @@ export default {
     border-bottom: 1px solid #ddd;
   }
   #headin{
-    margin-left: 975px;
+    margin-left: 800px;
   }
   .headtap{
     float: left;
