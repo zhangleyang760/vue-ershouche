@@ -28,6 +28,7 @@
           <dl>
             <dt>品牌:</dt>
             <dd>
+              <a>不限</a>
               <a>丰田</a>
               <a>吉普</a>
               <a>长城</a>
@@ -77,13 +78,18 @@
           </dl>
         </div>
         <div id="carList">
-          <div v-for="car in carList">
-            <img :src="car.pic"/>
-            <span v-html="car.price"></span>
+          <div v-for="car in carList" class="car">
+            <img :src="car.pic" height="150px" width="200px"/>
+            <div class="price"><span v-html="car.price"></span>万元</div>
+            <div class="brand"><span v-html="car.brand"></span></div>
+            <div class="cname"><span v-html="car.cname"></span></div>
+            <div class="detail">
+              <span v-html="car.cyear"></span>年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <span v-html="car.mileage"></span>万公里&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <span v-html="car.ctype"></span>
+            </div>
           </div>
-
         </div>
-
       </div>
     </div>
 </template>
@@ -92,42 +98,44 @@
     export default{
         data(){
             return {
-                type:'',
-                brand:'',
-                price:'',
-                color:'',
+                searchTap: {
+                  type: '',
+                  brand: '',
+                  price: '',
+                  color: '',
+                },
                 carList:[
                   {
-                      name:'aaaa',
-                      bland:'宝马',
+                      cname:'3系 2017款 320Li M运动型 ',
+                      brand:'宝马',
                       price:12,
-                      type:'越野车',
+                      ctype:'越野车',
                       mileage:2,
-                      cyear:2,
+                      cyear:2017,
                       pic:'',
                   },{
-                    name:'aaaa',
-                    bland:'宝马',
+                    cname:'3系 2017款 320Li M运动型 ',
+                    brand:'宝马',
                     price:12,
-                    type:'越野车',
+                    ctype:'越野车',
                     mileage:2,
-                    cyear:2,
+                    cyear:2017,
                     pic:'',
                   },{
-                    name:'aaaa',
-                    bland:'宝马',
+                    cname:'3系 2017款 320Li M运动型 ',
+                    brand:'宝马',
                     price:12,
-                    type:'越野车',
+                    ctype:'越野车',
                     mileage:2,
-                    cyear:2,
+                    cyear:2017,
                     pic:'',
                   },{
-                    name:'aaaa',
-                    bland:'宝马',
+                    cname:'3系 2017款 320Li M运动型 ',
+                    brand:'宝马',
                     price:12,
-                    type:'越野车',
-                    mileage:2,
-                    cyear:2,
+                    ctype:'越野车',
+                    mileage:2.8,
+                    cyear:2017,
                     pic:'',
                   }
                 ]
@@ -253,10 +261,12 @@
     border: 0;
   }
   #main{
+    clear: both;
     width: 100%;
     padding-top: 30px;
     padding-bottom: 30px;
     background: #F0F0F0;
+    height: auto;
   }
   #filter{
     padding-top: 20px;
@@ -301,10 +311,64 @@
   #carList{
     padding-top: 20px;
     padding-left: 20px;
-    height: 180px;
     width: 1183px;
     margin-left: 150px;
+    margin-top: 20px;
     background-color: white;
+  }
+  #carList .car{
+    height: 150px;
+    padding: 20px 0 20px 0;
+    border-bottom: 1px solid #f2f2f2;
+    width: 950px;
+  }
+  #carList .car:hover{
+    background-color:#FCFCFC ;
+  }
+  .car .cname{
+    cursor: pointer;
+    font-weight: 400;
+    color: #494949;
+    font-size: 18px;
+    line-height: 25px;
+    position: relative;
+    left: 265px;
+    top: -275px;
+  }
+  .car .brand{
+    cursor: pointer;
+    color: rgb(255, 0, 0);
+    font-size: 20px;
+    font-weight: 500;
+    position: relative;
+    left: 220px;
+    top: -250px;
+  }
+  .car .price{
+    padding: 68px 0 0 78px;
+    font-size: 22px;
+    color: #fc4e28;
+    font-weight: 700;
+    position: relative;
+    left: 620px;
+    top: -160px;
+  }
+  .car .detail{
+    display: inline-block;
+    margin-right: 18px;
+    color: #787878;
+    line-height: 56px;
+    position: relative;
+    left: 240px;
+    top: -270px;
+  }
+  .car .cyearAndMile span{
+
+  }
+  .car img{
+    position: relative;
+    left: auto;
+    top: auto;
   }
 
 </style>
