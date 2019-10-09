@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 import userinfo from '@/components/userinfo'
+import houtai from '@/components/houtai'
 import houtai1 from '@/components/houtai1'
 import updatehoutai1 from '@/components/updatehoutai1'
 import userReg from '@/components/userReg'
@@ -12,6 +13,7 @@ import index from '@/components/index'
 import houtai3 from '@/components/houtai3'
 import updatehoutai3 from '@/components/updatehoutai3'
 import adminlogin from '@/components/adminlogin'
+import upload from "@/components/upload"
 Vue.use(Router)
 
 export default new Router({
@@ -21,6 +23,11 @@ export default new Router({
     name:'userinfo',
     component:userinfo
     },{
+    path:'/houtai',
+      name:'houtai',
+      component:houtai
+    },
+    {
     path:'/houtai1',
       name:'houtai1',
       component:houtai1
@@ -65,7 +72,14 @@ export default new Router({
       path:'/adminlogin',
       name:'adminlogin',
       component:adminlogin
-    }
+    },{
+
+      path:'/upload',
+      name:'upload',
+      component:upload
+
+
+}
 
   ]
 })
