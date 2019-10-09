@@ -5,7 +5,7 @@
       <div id="left" >
         <div id="L_lay1">
           <div id="lab1" >PERSONAL INFORMATION</div>
-          <div id="username" class="ROW">USERNAME</div>
+          <div id="username" class="ROW">{{users.sname}}</div>
           <div id="userphone" class="ROW">PHONE</div>
           <div id="provice" class="ROW">PROVICE</div>
           <div id="city" class="ROW">CITY</div>
@@ -14,6 +14,7 @@
         </div>
       </div>
       <div id="right">
+        <div id="headline2" align="center">我的收藏</div>
         <div id="R_column1" class="R">
           <div class="pic">图片1</div>
           <div class="headline">奔驰</div>
@@ -49,8 +50,10 @@
     data(){
       return{
         users:{
-            sname:''
+          sname:''
         }
+
+
 
       }
     },
@@ -58,7 +61,7 @@
       this.query();
     },methods:{
       query:function () {
-        var url='api/findCustomer'
+        var url='api/findBySellerName'
         axios.get(url).then(res=>{
           this.users=res.data.list;
         })
@@ -103,8 +106,21 @@
   }
   .R{
     width:215px;
-    height: 250px;
+    height: 225px;
     float: left;
+  }
+  #headline2{
+    width:650px;
+    height:30px;
+    font-size: 18px;
+    text-align: center;
+    line-height: 22px;
+    background-color: limegreen;
+    font-family: "Microsoft YaHei";
+    font-weight: bolder;
+    color: aliceblue;
+
+
   }
 
 </style>
