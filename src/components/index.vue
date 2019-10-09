@@ -9,71 +9,26 @@
         <div id="filter">
           <dl>
             <dt>类型:</dt>
-            <dd>
-              <a @click="getSearch('')">不限</a>
-              <a @click="getSearch('轿车')">轿车</a>
-              <a>越野车</a>
-              <a>MPV</a>
-              <a>跑车</a>
-              <a>面包车</a>
-              <a>皮卡</a>
-              <a>新能源</a>
-              <a>工程车</a>
-              <a>货车</a>
-              <a>客车</a>
-              <a>三轮机动车</a>
-              <a>老年代步车</a>
+            <dd >
+              <a  v-for="type in typeList" @click="selectType(type)" v-html="type"></a>
             </dd>
           </dl>
           <dl>
             <dt>品牌:</dt>
             <dd>
-              <a>不限</a>
-              <a>丰田</a>
-              <a>吉普</a>
-              <a>长城</a>
-              <a>现代</a>
-              <a>本田</a>
-              <a>宝马</a>
-              <a>三菱</a>
-              <a>路虎</a>
-              <a>起亚</a>
-              <a>奥迪</a>
-              <a>奔驰</a>
-              <a>北汽制造</a>
-              <a>大众</a>
-              <a>日产</a>
-              <a>一汽</a>
+              <a  v-for="brand in brandList" @click="selectBrand(brand)" v-html="brand"></a>
             </dd>
           </dl>
           <dl>
             <dt>价格:</dt>
             <dd>
-              <a>不限</a>
-              <a>六万元以内</a>
-              <a>6-8万元</a>
-              <a>8-10万元</a>
-              <a>10-20万元</a>
-              <a>20-30万元</a>
-              <a>30万元以上</a>
+              <a  v-for="price in priceList" @click="selectPrice(price.val)" v-html="price.name"></a>
             </dd>
           </dl>
           <dl>
             <dt>颜色:</dt>
             <dd>
-              <a>全部</a>
-              <a><em class="filter_color_icon" style="background-color: #29282c"></em>黑</a>
-              <a>白</a>
-              <a>红</a>
-              <a>灰</a>
-              <a>银</a>
-              <a>蓝</a>
-              <a>黄</a>
-              <a>棕</a>
-              <a>绿</a>
-              <a>橙</a>
-              <a>紫</a>
-              <a>香槟</a>
+              <a  v-for="color in colorList" @click="selectColor(color)" v-html="color"></a>
             </dd>
           </dl>
         </div>
@@ -89,6 +44,13 @@
               <span v-html="car.ctype"></span>
             </div>
           </div>
+          <el-pagination
+            v-on:current-change="changePage"
+            :current-page="this.param.currentPage"
+            :page-size="this.param.size"
+            layout="prev, pager, next"
+            :total="this.total">
+          </el-pagination>
         </div>
       </div>
     </div>
@@ -98,10 +60,27 @@
     export default{
         data(){
             return {
-                searchTap: {
+
+                total:'',
+                param:{
+                  currentPage:1,
+                  size:5,
+                },
+                typeList:[
+                  '不限', '轿车', '越野车','MPV','跑车','面包车','皮卡','新能源','工程车','货车','客车','三轮机动车','老年代步车'
+                ],
+                brandList:['不限','丰田','吉普','长城','现代','本田','宝马','三菱','路虎',
+                  '起亚','奥迪','奔驰','北汽制造','大众','日产','一汽'],
+                priceList:[{name:'不限',val:[]},{name:'六万元以内',val:[0,6]},{name:'6-8万元',val:[6,8]},
+                  {name:'8-10万元',val:[8,10]},{name:'10-20万元',val:[10,20]},{name:'20-30万元',val:[20,30]},
+                  {name:'30万元以上',val:[30,1000]}],
+                colorList:['全部','黑','白','红','灰','银','蓝','黄','棕','绿','橙','紫','香槟'],
+                searchTag: {
+                  name:'',
                   type: '',
                   brand: '',
-                  price: '',
+                  minPrice: '',
+                  maxPrice:'',
                   color: '',
                 },
                 carList:[
@@ -144,21 +123,48 @@
             }
         },
         mounted(){
+            this.findAll();
 
         },
         methods: {
-          getSearch:function (search) {
-              alert(search)
+          findAll:function () {
+              axios.post('/api/index',{
+                name:this.searchTag.name,
+                type:this.searchTag.type,
+                brand:this.searchTag.brand,
+                minPrice:this.searchTag.minPrice,
+                color:this.searchTag.color,
+                currentPage:this.param.currentPage,
+                size:this.param.size
+              }).
+              then(res=>{
+                  this.carList=res.data.cars;
+                  this.total=res.data.total;
+              })
+          },
+          selectType:function (val) {
+              this.searchTap.type=val;
 
+          },
+          selectBrand:function (val) {
+            this.searchTap.brand=val;
+          },
+          selectColor:function (val) {
+            this.searchTap.color=val;
+          },
+          selectPrice:function (val) {
+            this.searchTap.minPrice=val[0];
+            this.searchTap.maxPrice=val[1];
           }
+
         }
     }
 </script>
 <style>
-  a, abbr, acronym, address, applet, big, blockquote, body, caption, cite, code, dd, del, dfn, div, dl, dt, em, fieldset, font, form, h1, h2, h3, h4, h5, h6, html, iframe, ins, kbd, label, legend, li, object, ol, p, pre, q, s, samp, small, span, strike, strong, sub, sup, table, tbody, td, tfoot, th, thead, tr, tt, ul, var {
+  a, abbr, acronym, address, applet, big, blockquote, body, caption, cite, code, dd, del, dfn, div, dl, dt, em, fieldset, font, form, h1, h2, h3, h4, h5, h6, iframe, ins, kbd, label, legend, li, object, ol, p, pre, q, s, samp, small, span, strike, strong, sub, sup, table, tbody, td, tfoot, th, thead, tr, tt, ul, var {
     font-family: microsoft yahei,arial,"\5B8B\4F53",sans-serif;
   }
-  a, abbr, acronym, address, applet, big, blockquote, body, caption, cite, code, dd, del, dfn, div, dl, dt, em, fieldset, font, form, h1, h2, h3, h4, h5, h6, html, iframe, ins, kbd, label, legend, li, object, ol, p, pre, q, s, samp, small, span, strike, strong, sub, sup, table, tbody, td, tfoot, th, thead, tr, tt, ul, var {
+  a, abbr, acronym, address, applet, big, blockquote, body, caption, cite, code, dd, del, dfn, div, dl, dt, em, fieldset, font, form, h1, h2, h3, h4, h5, h6,iframe, ins, kbd, label, legend, li, object, ol, p, pre, q, s, samp, small, span, strike, strong, sub, sup, table, tbody, td, tfoot, th, thead, tr, tt, ul, var {
     border: 0;
     text-decoration: none;
     font-size: 100%;
@@ -168,6 +174,9 @@
     outline: 0;
     padding: 0;
     vertical-align: baseline;
+  }
+  html{
+    width: 100%;
   }
   #headdiv{
   height: 104px;
@@ -326,46 +335,51 @@
     background-color:#FCFCFC ;
   }
   .car .cname{
+    float: left;
     cursor: pointer;
     font-weight: 400;
     color: #494949;
     font-size: 18px;
     line-height: 25px;
     position: relative;
-    left: 265px;
-    top: -275px;
+    left: -33px;
+    top: 0px;
   }
   .car .brand{
+    float: left;
     cursor: pointer;
     color: rgb(255, 0, 0);
     font-size: 20px;
     font-weight: 500;
     position: relative;
-    left: 220px;
-    top: -250px;
+    left: -38px;
+    top: -3px;
   }
   .car .price{
-    padding: 68px 0 0 78px;
+    float: left;
+    width: 80px;
     font-size: 22px;
     color: #fc4e28;
     font-weight: 700;
     position: relative;
-    left: 620px;
-    top: -160px;
+    left: 500px;
+    top: 45px;
   }
   .car .detail{
+    float: left;
     display: inline-block;
     margin-right: 18px;
     color: #787878;
     line-height: 56px;
     position: relative;
-    left: 240px;
-    top: -270px;
+    left: -300px;
+    top: 35px;
   }
   .car .cyearAndMile span{
 
   }
   .car img{
+    float: left;
     position: relative;
     left: auto;
     top: auto;

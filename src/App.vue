@@ -24,11 +24,8 @@ export default {
 
 <style>
   #app{
-    position: absolute;
-    top:0px;
   }
   #head{
-    width: 1519.4px;
     height: 36px;
     line-height: 36px;
     background: #fff;
