@@ -69,6 +69,13 @@
         </template>
       </el-table-column>
     </el-table>
+    <el-pagination
+      background
+      layout="prev, pager, next"
+      :page-size="this.params.size"
+      v-on:current-change="changePage"
+      :total="total" :current-page="this.params.page">
+    </el-pagination>
   </div>
 </template>
 
@@ -77,7 +84,12 @@
   export default{
       data(){
           return{
-            car:[]
+            car:[],
+            total: 0,
+            params: {
+              page: 1,
+              size: 5
+            }
           }
       },
     mounted(){
@@ -85,11 +97,17 @@
     },
     methods:{
           query:function () {
-            var url='api/findCarAll'
+            var url='api/findCarAll' + this.params.page + "/" + this.params.size
             axios.get(url).then(res=>{
-                this.car=res.data;
+                this.car=res.data.list;
+                this.total=res.data.total;
             })
           },
+      changePage: function (page) {
+
+        this.params.page = page;
+        this.query()
+      },
       tohoutai1:function () {
         this.$router.push({name:'houtai1'})
       },
@@ -105,8 +123,8 @@
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
-          var url = "api/deleteSeller"
-          axios.post(url, {sid: cid}).then(res => {
+          var url = "api/deleteCar"
+          axios.post(url, {cid: cid}).then(res => {
             this.query();
           })
 
