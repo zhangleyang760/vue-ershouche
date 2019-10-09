@@ -2,7 +2,10 @@
     <div>
         <div id="headdiv">
           <div id="logo"><img src="http://pyl6emnsf.bkt.clouddn.com/logo.jpg"/></div>
-          <div id="search"><input/><a href="">搜车源</a></div>
+          <div id="search">
+            <input placeholder="请输入关键字查找" v-model="this.searchTag.name" ref="name" />
+            <a @click="inputName">搜车源</a>
+          </div>
           <div id="post"><a href="">免费发布</a></div>
         </div>
       <div id="main">
@@ -10,27 +13,32 @@
           <dl>
             <dt>类型:</dt>
             <dd >
-              <a  v-for="type in typeList" @click="selectType(type)" v-html="type"></a>
+              <a  v-for="type in typeList" @click="selectType(type)" v-html="type"
+                  :class="typeOn == type? 'selectA':'unSelect' "></a>
             </dd>
           </dl>
           <dl>
             <dt>品牌:</dt>
             <dd>
-              <a  v-for="brand in brandList" @click="selectBrand(brand)" v-html="brand"></a>
+              <a  v-for="brand in brandList" @click="selectBrand(brand)" v-html="brand"
+                  :class="brandOn == brand? 'selectA':'unSelect' "></a>
             </dd>
           </dl>
           <dl>
             <dt>价格:</dt>
             <dd>
-              <a  v-for="price in priceList" @click="selectPrice(price.val)" v-html="price.name"></a>
+              <a ref="price" v-for="price in priceList" @click="selectPrice(price.val,price.name)" v-html="price.name"
+                 :class="priceOn == price.name? 'selectA':'unSelect' "></a>
             </dd>
           </dl>
           <dl>
             <dt>颜色:</dt>
             <dd>
-              <a  v-for="color in colorList" @click="selectColor(color)" v-html="color"></a>
+              <a  v-for="color in colorList" @click="selectColor(color)" v-html="color"
+                  :class="colorOn == color? 'selectA':'unSelect' "></a>
             </dd>
           </dl>
+          <div id="reset"><el-button type="text" size="medium" @click="reset()">重置条件</el-button></div>
         </div>
         <div id="carList">
           <div v-for="car in carList" class="car">
@@ -57,10 +65,15 @@
 </template>
 <script>
     import axios from 'axios'
+    import ElInput from "../../node_modules/element-ui/packages/input/src/input";
     export default{
-        data(){
+      components: {ElInput},
+      data(){
             return {
-
+                typeOn:'不限',
+                brandOn:'不限',
+                priceOn:'不限',
+                colorOn:'不限',
                 total:'',
                 param:{
                   currentPage:1,
@@ -74,7 +87,7 @@
                 priceList:[{name:'不限',val:[]},{name:'六万元以内',val:[0,6]},{name:'6-8万元',val:[6,8]},
                   {name:'8-10万元',val:[8,10]},{name:'10-20万元',val:[10,20]},{name:'20-30万元',val:[20,30]},
                   {name:'30万元以上',val:[30,1000]}],
-                colorList:['全部','黑','白','红','灰','银','蓝','黄','棕','绿','橙','紫','香槟'],
+                colorList:['不限','黑','白','红','灰','银','蓝','黄','棕','绿','橙','紫','香槟'],
                 searchTag: {
                   name:'',
                   type: '',
@@ -133,6 +146,7 @@
                 type:this.searchTag.type,
                 brand:this.searchTag.brand,
                 minPrice:this.searchTag.minPrice,
+                maxPrice:this.searchTag.maxPrice,
                 color:this.searchTag.color,
                 currentPage:this.param.currentPage,
                 size:this.param.size
@@ -142,19 +156,60 @@
                   this.total=res.data.total;
               })
           },
+          changePage:function (page) {
+            this.param.currentPage=page;
+            this.findAll();
+          },
           selectType:function (val) {
-              this.searchTap.type=val;
+              this.typeOn=val;
+              if(val=='不限'){
+                  val='';
+              }
+              this.searchTag.type=val;
+              this.findAll();
 
           },
           selectBrand:function (val) {
-            this.searchTap.brand=val;
+            this.brandOn=val;
+            if(val=='不限'){
+              val='';
+            }
+            this.searchTag.brand=val;
+            this.findAll();
           },
           selectColor:function (val) {
-            this.searchTap.color=val;
+            this.colorOn=val;
+            if(val=='不限'){
+              val='';
+            }
+            this.searchTag.color=val;
+            this.findAll();
           },
-          selectPrice:function (val) {
-            this.searchTap.minPrice=val[0];
-            this.searchTap.maxPrice=val[1];
+          selectPrice:function (val,name) {
+            this.priceOn=name;
+            if(val=='不限'){
+              val='';
+            }
+            this.searchTag.minPrice=val[0];
+            this.searchTag.maxPrice=val[1];
+            this.findAll();
+          },
+          inputName:function () {
+            this.searchTag.name=this.$refs.name.value;
+            this.findAll();
+          },
+          reset:function () {
+              this.typeOn='不限';
+              this.brandOn='不限';
+              this.priceOn='不限';
+              this.colorOn='不限';
+              this.searchTag.name='';
+              this.searchTag.type='';
+              this.searchTag.brand='';
+              this.searchTag.minPrice='';
+              this.searchTag.maxPrice='';
+              this.searchTag.color='';
+              this.findAll();
           }
 
         }
@@ -280,7 +335,7 @@
   #filter{
     padding-top: 20px;
     padding-left: 20px;
-    height: 180px;
+    height: 200px;
     width: 1183px;
     margin-left: 150px;
     background-color: white;
@@ -316,6 +371,15 @@
   }
   #filter dl dd a:hover {
     color: #ff6946;
+  }
+  #filter dl dd .selectA {
+    color: #ff6946;
+  }
+  #filter #reset{
+    position: relative;
+    left: 17px;
+    top: -11px;
+    width: 40px;
   }
   #carList{
     padding-top: 20px;
