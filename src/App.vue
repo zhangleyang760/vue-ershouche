@@ -3,8 +3,8 @@
     <div>
       <div id="head">
         <div id="headin">
-          <div class="headtap"><a href="userlogin.vue">登录</a>|<a href="userReg.vue">注册</a> </div>
-          <div class="headtap"><a href="userinfo.vue">个人中心</a> </div>
+          <div class="headtap"><a href="/#/userlogin">登录</a>|<a href="/#/userReg">注册</a> </div>
+          <div class="headtap"><a href="/#/userinfo">个人中心</a> </div>
           <div class="headtap"><a href="">商家中心</a> </div>
           <div class="headtap"><a href="">帮助中心</a> </div>
           <div class="headtap"><a href="">联系客服</a> </div>
