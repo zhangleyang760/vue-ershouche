@@ -3,7 +3,7 @@
     <div>
       <div id="head">
         <div id="headin">
-          <div class="headtap"><a href="userlogin.vue">登录</a>|<a href="userReg.vue">注册</a> </div>
+          <div class="headtap"><a href="userlogin.vue">登录</a> | <a href="userReg.vue">注册</a> </div>
           <div class="headtap"><a href="userinfo.vue">个人中心</a> </div>
           <div class="headtap"><a href="">商家中心</a> </div>
           <div class="headtap"><a href="">帮助中心</a> </div>
@@ -36,7 +36,7 @@ export default {
     border-bottom: 1px solid #ddd;
   }
   #headin{
-    margin-left: 975px;
+    margin-left: 966px;
   }
   .headtap{
     float: left;
