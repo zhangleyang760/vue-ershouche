@@ -11,7 +11,7 @@ import updatehoutai2 from '@/components/updatehoutai2'
 import index from '@/components/index'
 import houtai3 from '@/components/houtai3'
 import updatehoutai3 from '@/components/updatehoutai3'
-
+import adminlogin from '@/components/adminlogin'
 Vue.use(Router)
 
 export default new Router({
@@ -60,7 +60,12 @@ export default new Router({
       path:'/updatehoutai3/:cid',
       name:'updatehoutai3',
       component:updatehoutai3
-    },
+    },{
+
+      path:'/adminlogin',
+      name:'adminlogin',
+      component:adminlogin
+    }
 
   ]
 })
