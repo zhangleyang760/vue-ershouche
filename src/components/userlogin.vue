@@ -1,31 +1,28 @@
 <template>
   <div>
-    <div id="logo"><img src="http://pyl6emnsf.bkt.clouddn.com/logo.jpg"/></div>
-    <h1>欢迎登陆</h1><br>
-    <el-form :inline="true" :model="user" class="demo-form-inline">
+    <!--<el-form :inline="true" :model="user" class="demo-form-inline">-->
 
-      <el-form-item label="账户名：">
-        <el-input v-model="user.username" placeholder="请输入账户"></el-input>
-      </el-form-item><br>
-      <el-form-item label="密码：">
-        <el-input v-model="user.password" placeholder="请输入密码" show-password></el-input>
-      </el-form-item><br>
-      <el-form-item>
-        <el-button type="primary" round @click="submit()">登录</el-button>
-        <el-button type="primary" round @click="toinsert()">注册</el-button>
-      </el-form-item>
+      <!--<el-form-item label="账户名：">-->
+        <!--<el-input v-model="user.username" placeholder="请输入账户"></el-input>-->
+      <!--</el-form-item><br>-->
+      <!--<el-form-item label="密码：">-->
+        <!--<el-input v-model="user.password" placeholder="请输入密码" show-password></el-input>-->
+      <!--</el-form-item><br>-->
+      <!--<el-form-item>-->
+        <!--<el-button type="primary" round @click="submit()">登录</el-button>-->
+        <!--<el-button type="primary" round @click="toinsert()">注册</el-button>-->
+      <!--</el-form-item>-->
 
-    </el-form>
+    <!--</el-form>-->
 
 
 
-    <h1>登录表单</h1>
     <div class="container w3layouts agileits" id="bottom">
       <div class="login w3layouts agileits">
         <h2>登 录</h2>
-        <form action="#" method="post">
-          <input type="text" Name="Userame" placeholder="用户名" required="">
-          <input type="password" Name="Password" placeholder="密码" required="">
+        <form action="#" >
+          <input type="text" Name="Userame" v-model="user.username" placeholder="用户名" required="">
+          <input type="password" Name="Password" v-model="user.password" placeholder="密码" required="">
         </form>
         <ul class="tick w3layouts agileits">
           <li>
@@ -35,19 +32,11 @@
         </ul>
         <div class="send-button w3layouts agileits">
           <form>
-            <input type="submit" value="登 录">
+            <input type="submit"@click="submit()" value="登 录">
+            <input type="submit"@click="toinsert()" value="注 册">
           </form>
         </div>
         <a href="#">记住密码?</a>
-        <div class="social-icons w3layouts agileits">
-          <p>- 其他方式登录 -</p>
-          <ul>
-            <li class="qq"><a href="#"> <span class="icons w3layouts agileits"></span> <span class="text w3layouts agileits">QQ</span></a></li>
-            <li class="weixin w3ls"><a href="#"> <span class="icons w3layouts"></span> <span class="text w3layouts agileits">微信</span></a></li>
-            <li class="weibo aits"><a href="#"> <span class="icons agileits"></span> <span class="text w3layouts agileits">微博</span></a></li>
-            <div class="clear"> </div>
-          </ul>
-        </div>
         <div class="clear"></div>
       </div>
 
@@ -139,7 +128,7 @@ import axios from "axios"
   body {
     font-family: 'Roboto', sans-serif;
     text-align: center;
-    /*background: url("../images/background.png");*/
+    background: url("http://pyl6emnsf.bkt.clouddn.com/background1.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
@@ -148,7 +137,9 @@ import axios from "axios"
     -moz-background-size: cover;
     -o-background-size: cover;
   }
+
 #bottom{
+  margin-top: 80px;
   width: 300px;
 }
   body a {
@@ -248,7 +239,7 @@ import axios from "axios"
 
   ul.tick li input[type="checkbox"]:checked+label span:first-child:before {
     content: "";
-    /*background: url("")no-repeat;*/
+    background: url("http://pyl6emnsf.bkt.clouddn.com/tick.png")no-repeat;
     position: absolute;
     left: 3px;
     top: 3px;
