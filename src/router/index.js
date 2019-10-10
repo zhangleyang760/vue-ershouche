@@ -14,6 +14,7 @@ import houtai3 from '@/components/houtai3'
 import updatehoutai3 from '@/components/updatehoutai3'
 import adminlogin from '@/components/adminlogin'
 import upload from "@/components/upload"
+import userupdate from "@/components/userupdate"
 Vue.use(Router)
 
 export default new Router({
@@ -73,13 +74,14 @@ export default new Router({
       name:'adminlogin',
       component:adminlogin
     },{
-
       path:'/upload',
       name:'upload',
       component:upload
-
-
-}
+},{
+      path:'/userupdate/:sid',
+      name:'userupdate',
+      component:userupdate
+    }
 
   ]
 })
