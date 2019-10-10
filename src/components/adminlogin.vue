@@ -37,7 +37,7 @@ import axios from "axios"
                     alert(res.data)
                 this.$router.push({name:'houtai1'});
                 }else {
-                  this.$router.push({name:'index'});
+                  this.$router.push({name:'index  '});
                 }
             })
           }
