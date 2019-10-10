@@ -1,7 +1,7 @@
 <template>
   <div id="contain">
     <div id="outline">
-      <el-form  label-width="80px" :model="users">
+      <el-form :inline="true" :model="users" class="demo-form-inline">
       <!--<el-steps :active="active" align-center>-->
       <!--<el-step title="步骤1" description="这是一段很长很长很长的描述性文字"></el-step>-->
       <!--<el-step title="步骤2" description="这是一段很长很长很长的描述性文字"></el-step>-->
@@ -12,14 +12,31 @@
       <!--车主姓名：<el-input v-model="users.name" placeholder="车主姓名"></el-input>-->
       <!--<form enctype="multipart/form-data" action="#" method="post">-->
       <!--<form action="userinfo" enctype="multipart/form-data">-->
-      <el-input v-model="users.cname" placeholder="请输入车主姓名"></el-input>
-      <el-input v-model="users.brand" placeholder="请输入品牌"></el-input>
-      <el-input v-model="users.miaoshu" placeholder="请输入描述"></el-input>
-      <el-input v-model="users.ctype" placeholder="请输入类型"></el-input>
-      <el-input v-model="users.price" placeholder="请输入价格"></el-input>
-      <el-input v-model="users.cyear" placeholder="请输入车龄"></el-input>
+        <br><h1>上传信息</h1><br>
+        <el-form-item label="姓名：">
+          <el-input  v-model="users.cname" placeholder="请输入车主姓名" ></el-input>
+        </el-form-item><br>
+        <el-form-item label="品牌：">
+          <el-input v-model="users.brand" placeholder="请输入品牌"></el-input>
+        </el-form-item><br>
+        <el-form-item label="描述：">
+          <el-input v-model="users.miaoshu" placeholder="请输入描述"></el-input>
+        </el-form-item><br>
+        <el-form-item label="类型：">
+          <el-input v-model="users.ctype" placeholder="请输入类型"></el-input>
+        </el-form-item><br>
+        <el-form-item label="价格：">
+          <el-input v-model="users.price" placeholder="请输入价格"></el-input>
+        </el-form-item><br>
+        <el-form-item label="车龄：">
+          <el-input v-model="users.cyear" placeholder="请输入车龄"></el-input>
+        </el-form-item><br>
+        <el-form-item label="里程：">
       <el-input v-model="users.mileage" placeholder="请输入里程"></el-input>
+        </el-form-item><br>
+        <el-form-item label="颜色：">
       <el-input v-model="users.color" placeholder="请输入颜色"></el-input>
+        </el-form-item><br>
       <!--<el-input type="file" v-model="users.picture" placeholder="请上传图片"></el-input>-->
 
 
@@ -47,7 +64,7 @@
 
       <!--<el-button type="primary" round @click=uploadPic() >提交</el-button>-->
 
-      <el-button type="primary" round @click=upload()>上传数据</el-button>
+      <el-button type="primary" round  @click=upload()>上传数据</el-button>
       <!--</form>-->
 
       <!--<el-button style="margin-top: 12px;" @click="next">下一步</el-button>-->
@@ -164,5 +181,9 @@
     width: 178px;
     height: 178px;
     display: block;
+  }
+  el-input{
+    width: 800px;
+
   }
 </style>
