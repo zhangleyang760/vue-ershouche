@@ -10,7 +10,7 @@
       <div id="lunbo">
         <div class="block" >
           <el-carousel trigger="click" height="270px" :interval="5000" arrow="always" indicator-position="outside">
-            <el-carousel-item v-for="pic in this.car.pics" >
+            <el-carousel-item v-for="pic in this.pics" >
               <img :src="pic"/>
             </el-carousel-item>
           </el-carousel>
@@ -52,6 +52,13 @@
     export default{
         data(){
             return {
+                cid:'',
+                pics:[
+                  'http://pyl6emnsf.bkt.clouddn.com/huluwa.jpg',
+                  'http://pyl6emnsf.bkt.clouddn.com//Frd88DWuFPqIO9mycK-PYSGtZ7eZ',
+                  'http://pyl6emnsf.bkt.clouddn.com/huluwa.jpg',
+                  'http://pyl6emnsf.bkt.clouddn.com//Frd88DWuFPqIO9mycK-PYSGtZ7eZ'
+                ],
                 car:{
                     cname:'汉兰达 2009款 3.5L 四驱7座精英版',
                     brand:'宝马',
@@ -59,12 +66,6 @@
                     price:'18',
                     mileage:'2',
                     cyear:'2',
-                    pics:[
-                        'http://pyl6emnsf.bkt.clouddn.com/huluwa.jpg',
-                        'http://pyl6emnsf.bkt.clouddn.com//Frd88DWuFPqIO9mycK-PYSGtZ7eZ',
-                        'http://pyl6emnsf.bkt.clouddn.com/huluwa.jpg',
-                        'http://pyl6emnsf.bkt.clouddn.com//Frd88DWuFPqIO9mycK-PYSGtZ7eZ'
-                    ],
                     miaoshu:'好看好看好看好看好看好看好看好看好看好看好看好看好看好看好看'
                 },
                 seller:{
@@ -76,9 +77,19 @@
             }
         },
         mounted(){
+            this.cid=this.$route.params.cid;
+            this.reset(this.cid);
+
 
         },
         methods: {
+            reset:function (cid) {
+                axios.post('/api/detail',{cid:cid}).then(res=>{
+                    this.car=res.data.car;
+                    this.seller=res.data.seller;
+                    this.pics=res.data.pics;
+                })
+            }
 
         }
     }
@@ -272,7 +283,7 @@
     position: relative;
     top: -238px;
     line-height: 20px;
-   width: 500px;
+   width: 600px;
     left: 15%;
     margin: 0px;
   }
