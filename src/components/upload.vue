@@ -13,8 +13,8 @@
       <!--<form enctype="multipart/form-data" action="#" method="post">-->
       <!--<form action="userinfo" enctype="multipart/form-data">-->
         <br><h1>上传信息</h1><br>
-        <el-form-item label="姓名：">
-          <el-input  v-model="users.cname" placeholder="请输入车主姓名" ></el-input>
+        <el-form-item label="车名：">
+          <el-input  v-model="users.cname" placeholder="请输入车的全称" ></el-input>
         </el-form-item><br>
         <el-form-item label="品牌：">
           <el-input v-model="users.brand" placeholder="请输入品牌"></el-input>

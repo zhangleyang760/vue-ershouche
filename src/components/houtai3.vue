@@ -17,7 +17,7 @@
       <el-table-column
         prop="cname"
         label="车"
-        width="80">
+        width="260">
       </el-table-column>
       <el-table-column
         prop="brand"
@@ -52,7 +52,7 @@
       <el-table-column
         prop="miaoshu"
         label="描述"
-        width="180">
+        width="150">
       </el-table-column>
       <el-table-column
         prop="pic"

@@ -6,7 +6,7 @@
             <input placeholder="请输入关键字查找" v-model="this.searchTag.name" ref="name" />
             <a @click="inputName">搜车源</a>
           </div>
-          <div id="post"><a href="">免费发布</a></div>
+          <div id="post"><a href="/#/upload">免费发布</a></div>
         </div>
       <div id="main">
         <div id="filter">
