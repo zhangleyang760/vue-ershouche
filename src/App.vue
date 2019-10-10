@@ -3,12 +3,13 @@
     <div>
       <div id="head">
         <div id="headin">
-          <div class="headtap"><a href="userlogin.vue">登录</a>|<a href="userReg.vue">注册</a> </div>
-          <div class="headtap"><a href="userinfo.vue">个人中心</a> </div>
+          <div class="headtap"><router-link to="/userlogin">登录</router-link>|<router-link to="/userReg">注册</router-link> </div>
+          <div class="headtap"><router-link to="/userinfo">个人中心</router-link></div>
           <div class="headtap"><a href="">商家中心</a> </div>
-          <div class="headtap"><a href="">帮助中心</a> </div>
+          <div class="headtap"><a href="/#/upload">帮助中心</a> </div>
           <div class="headtap"><a href="">联系客服</a> </div>
           <div class="headtap"><a href="">网站导航</a> </div>
+          <div class="headtap"><router-link to="/adminlogin">后台管理</router-link> </div>
         </div>
       </div>
     </div>

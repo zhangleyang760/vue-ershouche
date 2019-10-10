@@ -1,6 +1,7 @@
 <template>
   <div id="contain">
     <div id="outline">
+      <el-form :inline="true" :model="users" class="demo-form-inline">
       <!--<el-steps :active="active" align-center>-->
       <!--<el-step title="步骤1" description="这是一段很长很长很长的描述性文字"></el-step>-->
       <!--<el-step title="步骤2" description="这是一段很长很长很长的描述性文字"></el-step>-->
@@ -10,15 +11,34 @@
 
       <!--车主姓名：<el-input v-model="users.name" placeholder="车主姓名"></el-input>-->
       <!--<form enctype="multipart/form-data" action="#" method="post">-->
-      <el-input v-model="users.cname" placeholder="请输入车主姓名"></el-input>
-      <el-input v-model="users.brand" placeholder="请输入品牌"></el-input>
-      <el-input v-model="users.miaoshu" placeholder="请输入描述"></el-input>
-      <el-input v-model="users.ctype" placeholder="请输入类型"></el-input>
-      <el-input v-model="users.price" placeholder="请输入价格"></el-input>
-      <el-input v-model="users.cyear" placeholder="请输入车龄"></el-input>
+      <!--<form action="userinfo" enctype="multipart/form-data">-->
+        <br><h1>上传信息</h1><br>
+        <el-form-item label="车名：">
+          <el-input  v-model="users.cname" placeholder="请输入车的全称" ></el-input>
+        </el-form-item><br>
+        <el-form-item label="品牌：">
+          <el-input v-model="users.brand" placeholder="请输入品牌"></el-input>
+        </el-form-item><br>
+        <el-form-item label="描述：">
+          <el-input v-model="users.miaoshu" placeholder="请输入描述"></el-input>
+        </el-form-item><br>
+        <el-form-item label="类型：">
+          <el-input v-model="users.ctype" placeholder="请输入类型"></el-input>
+        </el-form-item><br>
+        <el-form-item label="价格：">
+          <el-input v-model="users.price" placeholder="请输入价格"></el-input>
+        </el-form-item><br>
+        <el-form-item label="车龄：">
+          <el-input v-model="users.cyear" placeholder="请输入车龄"></el-input>
+        </el-form-item><br>
+        <el-form-item label="里程：">
       <el-input v-model="users.mileage" placeholder="请输入里程"></el-input>
+        </el-form-item><br>
+        <el-form-item label="颜色：">
       <el-input v-model="users.color" placeholder="请输入颜色"></el-input>
-      <el-button type="primary" round @click=upload()>上传数据</el-button>
+        </el-form-item><br>
+      <!--<el-input type="file" v-model="users.picture" placeholder="请上传图片"></el-input>-->
+
 
       <!--<el-upload-->
       <!--class="upload-demo"-->
@@ -32,11 +52,20 @@
       <!--</el-upload>-->
       <!--<el-input v-model="users.cname" placeholder="请再次输入车主姓名"></el-input>-->
       <!--<el-input v-model="users.brand" placeholder="请再次输入品牌"></el-input>-->
-      <el-input type="file" v-model="users.pic" placeholder="请上传图片"></el-input>
-      <el-input v-model="users.cname" placeholder="请输入车主姓名"></el-input>
-      <el-input v-model="users.brand" placeholder="请输入品牌"></el-input>
-      <el-button type="primary" round @click=uploadPic() >提交</el-button>
+      <el-upload
+        class="avatar-uploader"
+        action="api/uploadPic"
+        :show-file-list="false"
+        :on-success="handleAvatarSuccess"
+        :before-upload="beforeAvatarUpload">
+        <img v-if="imageUrl" :src="imageUrl" class="avatar">
+        <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+      </el-upload>
 
+      <!--<el-button type="primary" round @click=uploadPic() >提交</el-button>-->
+
+      <el-button type="primary" round  @click=upload()>上传数据</el-button>
+      <!--</form>-->
 
       <!--<el-button style="margin-top: 12px;" @click="next">下一步</el-button>-->
       <!--<el-input type="file"  v-model="users.picture" placeholder="请上传图片"></el-input>-->
@@ -55,6 +84,7 @@
       <!--<input type="submit" value="提交" @click=upload() />-->
 
       <!--</form>-->
+      </el-form>
     </div>
   </div>
 </template>
@@ -63,7 +93,8 @@
   export default{
     data(){
       return{
-        active:0,
+//        active:0,
+        imageUrl: '',
         users:{
           cname:'',
           brand:'',
@@ -73,10 +104,7 @@
           cyear:'',
           mileage:'',
           color:'',
-          picture:'',
-          pic2:'',
-          pic3:'',
-          pic4:''
+          pic:'',
         }
       }
     },
@@ -86,7 +114,7 @@
         axios.post(url,this.users).then(res=>{
           if(res.data!=null){
             this.$router.push({name:'userinfo'})
-
+            alert("上传成功")
           }else {
             alert("上传失败")
           }
@@ -95,12 +123,29 @@
 //      next() {
 //        if (this.active++ > 3) this.active = 4;
 //      }
-      uploadPic:function () {
-        var url='api/uploadPic'
-        axios.post(url,this,users).then(res=>{
+//      uploadPic:function () {
+//        var url='api/uploadPic'
+//        axios.post(url,this,users).then(res=>{
+//
+//        })
+//      },
+      handleAvatarSuccess(res, file) {
+        this.imageUrl = URL.createObjectURL(file.raw);
+        this.users.pic=res;
+      },
+      beforeAvatarUpload(file) {
+        const isJPG = file.type === 'image/jpeg';
+        const isLt2M = file.size / 1024 / 1024 < 2;
 
-        })
+        if (!isJPG) {
+          this.$message.error('上传头像图片只能是 JPG 格式!');
+        }
+        if (!isLt2M) {
+          this.$message.error('上传头像图片大小不能超过 2MB!');
+        }
+        return isJPG && isLt2M;
       }
+
     }
 
   }
@@ -113,5 +158,32 @@
   #outline{
     width:1349px;
     height: 800px;
+  }
+  .avatar-uploader .el-upload {
+    border: 1px dashed #d9d9d9;
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  .avatar-uploader .el-upload:hover {
+    border-color: #409EFF;
+  }
+  .avatar-uploader-icon {
+    font-size: 28px;
+    color: #8c939d;
+    width: 178px;
+    height: 178px;
+    line-height: 178px;
+    text-align: center;
+  }
+  .avatar {
+    width: 178px;
+    height: 178px;
+    display: block;
+  }
+  el-input{
+    width: 800px;
+
   }
 </style>
