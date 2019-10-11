@@ -11,6 +11,8 @@
           <div class="headtap"><a >联系客服</a> </div>
           <div class="headtap"><a >网站导航</a> </div>
           <div class="headtap"><router-link to="/adminlogin">后台管理</router-link> </div>
+          <div class="headtap"><router-link to="/realinfo">实名认证</router-link></div>
+          <div class="headtap" ><a  @click="loginout()">注销</a> </div>
         </div>
       </div>
     </div>
@@ -19,10 +21,24 @@
 </template>
 
 <script>
+  import axios from "axios"
 export default {
-  name: 'App'
-}
+  methods: {
+    loginout: function () {
+
+      var url = '/api/loginout'
+      axios.get(url).then(res => {
+
+        if (res.data != null && res.data =="退出成功") {
+          //alert(res.data)
+          this.$router.push({name: 'userlogin'});
+        }
+      })
+    }
+  }
+  }
 </script>
+
 
 <style scoped>
   #app{
