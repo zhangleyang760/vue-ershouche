@@ -1,6 +1,6 @@
 <template>
   <div id="contain">
-    <div id="outline">
+    <div id="outline"align="center">
       <el-form :inline="true" :model="users" class="demo-form-inline">
       <!--<el-steps :active="active" align-center>-->
       <!--<el-step title="步骤1" description="这是一段很长很长很长的描述性文字"></el-step>-->
@@ -12,29 +12,29 @@
       <!--车主姓名：<el-input v-model="users.name" placeholder="车主姓名"></el-input>-->
       <!--<form enctype="multipart/form-data" action="#" method="post">-->
       <!--<form action="userinfo" enctype="multipart/form-data">-->
-        <br><h1>上传信息</h1><br>
-        <el-form-item label="车名：">
+        <br><h1>上传信息&nbsp;&nbsp;<i class="el-icon-s-custom"></i></h1><br>
+        <i class="el-icon-truck"></i>&nbsp;&nbsp;&nbsp;&nbsp;<el-form-item  label="车名：">
           <el-input  v-model="users.cname" placeholder="请输入车的全称" ></el-input>
         </el-form-item><br>
-        <el-form-item label="品牌：">
+        <i class="el-icon-star-off"></i>&nbsp;&nbsp;&nbsp;&nbsp;<el-form-item label="品牌：">
           <el-input v-model="users.brand" placeholder="请输入品牌"></el-input>
         </el-form-item><br>
-        <el-form-item label="描述：">
+          <i class="el-icon-info"></i>&nbsp;&nbsp;&nbsp;&nbsp; <el-form-item label="描述：">
           <el-input v-model="users.miaoshu" placeholder="请输入描述"></el-input>
         </el-form-item><br>
-        <el-form-item label="类型：">
+          <i class="el-icon-price-tag"></i>&nbsp;&nbsp;&nbsp;&nbsp;<el-form-item label="类型：">
           <el-input v-model="users.ctype" placeholder="请输入类型"></el-input>
         </el-form-item><br>
-        <el-form-item label="价格：">
+          <i class="el-icon-coin"></i>&nbsp;&nbsp;&nbsp;&nbsp;<el-form-item label="价格：">
           <el-input v-model="users.price" placeholder="请输入价格"></el-input>
         </el-form-item><br>
-        <el-form-item label="车龄：">
+          <i class="el-icon-time"></i>&nbsp;&nbsp;&nbsp;&nbsp;<el-form-item label="车龄：">
           <el-input v-model="users.cyear" placeholder="请输入车龄"></el-input>
         </el-form-item><br>
-        <el-form-item label="里程：">
+          <i class="el-icon-odometer"></i>&nbsp;&nbsp;&nbsp;&nbsp;<el-form-item label="里程：">
       <el-input v-model="users.mileage" placeholder="请输入里程"></el-input>
         </el-form-item><br>
-        <el-form-item label="颜色：">
+          <i class="el-icon-magic-stick"></i>&nbsp;&nbsp;&nbsp;&nbsp;<el-form-item label="颜色：">
       <el-input v-model="users.color" placeholder="请输入颜色"></el-input>
         </el-form-item><br>
       <!--<el-input type="file" v-model="users.picture" placeholder="请上传图片"></el-input>-->
@@ -105,6 +105,7 @@
         </el-upload>
         <el-button id="btn2" type="primary" round  @click=uploadCarpic()>上传副图</el-button>
       <!--</form>-->
+        返回首页<i class="el-icon-right" @click=skip()></i>
       </el-form>
     </div>
   </div>
@@ -157,6 +158,9 @@
           }
         })
       },
+      skip:function () {
+        this.$router.push({name:'index'})
+      },
 //      next() {
 //        if (this.active++ > 3) this.active = 4;
 //      }
@@ -193,14 +197,14 @@
 
   }
 </script>
-<style scoped>
+<style >
   #contain{
     width:1349px;
-    height: 800px;
+    height: 1200px;
   }
   #outline{
     width:1349px;
-    height: 800px;
+    height: 1200px;
   }
   .avatar-uploader .el-upload {
     border: 1px dashed #d9d9d9;
@@ -230,22 +234,57 @@
   }
   #UP1{
     position: absolute;
-    left: 300px;
-    top:650px;
+    left: 450px;
+    top:720px;
   }
   #UP2{
     position: absolute;
-    left: 900px;
-    top: 650px;
+    left: 800px;
+    top: 720px;
   }
   #btn1{
     position: absolute;
-    left:340px;
-    top: 850px;
+    left:490px;
+    top: 920px;
   }
   #btn2{
     position: absolute;
-    left:940px;
-    top: 850px;
+    left:840px;
+    top: 920px;
+  }
+  .el-icon-right{
+    font-size:25px;
+  }
+  .el-icon-truck{
+    font-size: 25px;
+    padding-top: 6px;
+  }
+  .el-icon-star-off{
+    font-size: 25px;
+    padding-top: 6px;
+  }
+  .el-icon-info{
+    font-size: 25px;
+    padding-top: 6px;
+  }
+  .el-icon-price-tag{
+    font-size: 25px;
+    padding-top: 6px;
+  }
+  .el-icon-coin{
+    font-size: 25px;
+    padding-top: 6px;
+  }
+  .el-icon-time{
+    font-size: 25px;
+    padding-top: 6px;
+  }
+  .el-icon-odometer{
+    font-size: 25px;
+    padding-top: 6px;
+  }
+  .el-icon-magic-stick{
+    font-size: 25px;
+    padding-top: 6px;
   }
 </style>
