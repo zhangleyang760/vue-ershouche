@@ -15,27 +15,29 @@ import updatehoutai3 from '@/components/updatehoutai3'
 import adminlogin from '@/components/adminlogin'
 import upload from "@/components/upload"
 import detail from "@/components/detail"
-import realinfo from "@/components/realinfo"
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
-   {
-    path:"/userinfo",
-    name:'userinfo',
-    component:userinfo
+    {
+      path:"/userinfo",
+      name:'userinfo',
+      meta:{
+        requireAuth:true,
+      },
+      component:userinfo
     },{
-    path:'/houtai',
+      path:'/houtai',
       name:'houtai',
       component:houtai
     },
     {
-    path:'/houtai1',
+      path:'/houtai1',
       name:'houtai1',
       component:houtai1
     },{
-    path:'/updatehoutai1/:sid',
+      path:'/updatehoutai1/:sid',
       name:'updatehoutai1',
       component:updatehoutai1
     },
@@ -79,17 +81,18 @@ export default new Router({
 
       path:'/upload',
       name:'upload',
+      meta:{
+        requireAuth:true,
+      },
       component:upload
-  },
+    },
     {
       path:'/detail',
       name:'detail',
+      meta:{
+        requireAuth:true,
+      },
       component:detail
-    },{
-
-      path:'/realinfo',
-      name:'realinfo',
-      component:realinfo
     }
 
   ]

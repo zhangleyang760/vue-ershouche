@@ -1,5 +1,5 @@
 <template>
-  <div id="contain">
+  <div id="upload_contain">
     <div id="outline"align="center">
       <el-form :inline="true" :model="users" class="demo-form-inline">
       <!--<el-steps :active="active" align-center>-->
@@ -199,7 +199,7 @@
   }
 </script>
 <style >
-  #contain{
+  #upload_contain{
     width:1349px;
     height: 1200px;
   }
