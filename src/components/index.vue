@@ -220,7 +220,7 @@
         }
     }
 </script>
-<style>
+<style scoped>
   a, abbr, acronym, address, applet, big, blockquote, body, caption, cite, code, dd, del, dfn, div, dl, dt, em, fieldset, font, form, h1, h2, h3, h4, h5, h6, iframe, ins, kbd, label, legend, li, object, ol, p, pre, q, s, samp, small, span, strike, strong, sub, sup, table, tbody, td, tfoot, th, thead, tr, tt, ul, var {
     font-family: microsoft yahei,arial,"\5B8B\4F53",sans-serif;
   }

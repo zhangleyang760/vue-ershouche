@@ -5,7 +5,7 @@
   </div>
 </template>
 
-<style>
+<style scoped>
   #houtai{
     background-color: lightgoldenrodyellow;
     margin: 0 auto;

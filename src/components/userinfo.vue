@@ -79,7 +79,7 @@
     }
   }
 </script>
-<style>
+<style scoped>
 
   #lay2{
     width:1100px;

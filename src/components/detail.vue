@@ -29,8 +29,8 @@
             <el-divider></el-divider>
             <div>
               <span class="msgVue" v-text="this.car.brand"></span>
-              <span class="msgVue" v-text="this.car.mileage"></span>
-              <span class="msgVue" v-text="this.car.cyear"></span>
+              <span class="msgVue" v-text="this.car.mileage+'万公里'"></span>
+              <span class="msgVue" v-text="this.car.cyear+'年'"></span>
               <span class="msgVue" v-text="this.car.ctype"></span>
             </div>
           </div>
@@ -94,7 +94,7 @@
         }
     }
 </script>
-<style>
+<style scoped>
   html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
     font-size: 100%;
     font-style: inherit;
@@ -161,7 +161,8 @@
     border: 0;
   }
   #main{
-
+    height: 473px;
+    position: relative;
     background-color: white;
     width: 80%;
     margin-left: 10%;
@@ -203,25 +204,24 @@
     width: 480px;
   }
   #lunboBack{
-    margin-top: 50px;
+    margin-top: 40px;
     height: 350px;
     width: 480px;
     background-color: #eee;
 
   }
   #info{
-    width: 647px;
+    width: 637px;
     background-color: #fbfafa;
-    position: relative;
+    position: absolute;
     left: 44%;
-    top: -351px;
+    top: 91px;
     padding: 20px;
     padding-bottom: 47px;
   }
   #info #price{
     font-size: 24px;
     position: relative;
-    top: 3px;
     font-weight: 400;
     margin-right: 2px;
     color: #ff552e;
@@ -234,28 +234,27 @@
     font-size: 14px;
     color: #666;
   }
-  #msg{
+  #info #msg{
+    top: 25px;
     position: relative;
-    top: 52px;
-    left: 30px;
     padding: 35px 0;
     overflow: hidden;
     width: 500px;
   }
-  #msg .msgList{
+  #info #msg .msgList{
+    left: 34px;
+    top: -8px;
     position: relative;
-    left: 35px;
-    top: -10px;
     float: left;
     display:block;
     color: #9b9b9b;
     font-size: 18px;
     width: 108px;
   }
-  #msg .msgVue{
+  #info #msg .msgVue{
     position: relative;
     left: 35px;
-    top: -10px;
+    top: -13px;
     float: left;
     width: 108px;
     display: block;
@@ -264,9 +263,9 @@
     color: #666;
   }
   #tel{
-    position: relative;
+    position: absolute;
     left: 44%;
-    top: -325px;
+    top: 368px;
     float: left;
     width: 360px;
     height: 75px;
@@ -280,11 +279,11 @@
   #sellerInfo{
     font-size: 14px;
     color: #666;
-    position: relative;
-    top: -238px;
+    position: absolute;
+    top: 450px;
     line-height: 20px;
    width: 600px;
-    left: 15%;
+    left: 44%;
     margin: 0px;
   }
 

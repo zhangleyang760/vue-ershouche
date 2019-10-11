@@ -150,7 +150,7 @@
 
   }
 </script>
-<style>
+<style scoped>
   #contain{
     width:1349px;
     height: 800px;

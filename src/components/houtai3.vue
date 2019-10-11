@@ -78,7 +78,7 @@
     </el-pagination>
   </div>
 </template>
-<style>
+<style scoped>
   #car{
    margin: 0 auto;
     text-align: center;
