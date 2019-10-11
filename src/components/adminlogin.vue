@@ -30,21 +30,21 @@ import axios from "axios"
       },
     methods:{
           submit:function () {
-            var url='/api/adminlogin'
+            var url='/api/login'
             axios.post(url,this.user).then(res=>{
               // alert(res.data)
-                if (res.data!=null&&res.data=="登录成功"){
+                if (res.data!=null&&res.data=="admin"){
                     alert(res.data)
-                this.$router.push({name:'index'});
-                }else if(res.data==null){
-                  this.$router.push({name:'HelloWorld'});
+                this.$router.push({name:'houtai1'});
+                }else {
+                  this.$router.push({name:'index  '});
                 }
             })
           }
     }
   }
 </script>
-<style>
+<style scoped>
   #app {
     /*font-family: 'Avenir', Helvetica, Arial, sans-serif;*/
     /*-webkit-font-smoothing: antialiased;*/

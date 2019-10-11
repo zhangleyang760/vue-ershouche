@@ -6,7 +6,7 @@
             <input placeholder="请输入关键字查找" v-model="this.searchTag.name" ref="name" />
             <a @click="inputName">搜车源</a>
           </div>
-          <div id="post"><a href="">免费发布</a></div>
+          <div id="post"><a href="/#/upload">免费发布</a></div>
         </div>
       <div id="main">
         <div id="filter">
@@ -44,8 +44,10 @@
           <div v-for="car in carList" class="car">
             <img :src="car.pic" height="150px" width="200px"/>
             <div class="price"><span v-html="car.price"></span>万元</div>
-            <div class="brand"><span v-html="car.brand"></span></div>
-            <div class="cname"><span v-html="car.cname"></span></div>
+            <div class="brandAndName">
+              <span v-html="car.brand" class="brand"></span>
+              <span v-html="car.cname" class="cname" @click="detail(car.cid)"></span>
+            </div>
             <div class="detail">
               <span v-html="car.cyear"></span>年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <span v-html="car.mileage"></span>万公里&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -210,12 +212,15 @@
               this.searchTag.maxPrice='';
               this.searchTag.color='';
               this.findAll();
+          },
+          detail:function (id) {
+            this.$router.push({name:'detail',params:{cid:id}});
           }
 
         }
     }
 </script>
-<style>
+<style scoped>
   a, abbr, acronym, address, applet, big, blockquote, body, caption, cite, code, dd, del, dfn, div, dl, dt, em, fieldset, font, form, h1, h2, h3, h4, h5, h6, iframe, ins, kbd, label, legend, li, object, ol, p, pre, q, s, samp, small, span, strike, strong, sub, sup, table, tbody, td, tfoot, th, thead, tr, tt, ul, var {
     font-family: microsoft yahei,arial,"\5B8B\4F53",sans-serif;
   }
@@ -398,55 +403,50 @@
   #carList .car:hover{
     background-color:#FCFCFC ;
   }
+  .car{
+    position: relative;
+  }
+  .car .brandAndName{
+    position: absolute;
+    left: 23%;
+    top: 17px;
+  }
   .car .cname{
-    float: left;
     cursor: pointer;
     font-weight: 400;
     color: #494949;
     font-size: 18px;
     line-height: 25px;
-    position: relative;
-    left: -33px;
-    top: 0px;
   }
   .car .brand{
-    float: left;
     cursor: pointer;
     color: rgb(255, 0, 0);
     font-size: 20px;
     font-weight: 500;
-    position: relative;
-    left: -38px;
-    top: -3px;
   }
   .car .price{
-    float: left;
+    left: 74%;
+    top: 65px;
+    height: 30px;
     width: 80px;
     font-size: 22px;
     color: #fc4e28;
     font-weight: 700;
-    position: relative;
-    left: 500px;
-    top: 45px;
+    position: absolute;
   }
   .car .detail{
-    float: left;
+    left: 25%;
+    top: 52px;
+    height: 56px;
+    width: 37%;
     display: inline-block;
     margin-right: 18px;
     color: #787878;
     line-height: 56px;
-    position: relative;
-    left: -300px;
-    top: 35px;
-  }
-  .car .cyearAndMile span{
-
+    position: absolute;
   }
   .car img{
-    float: left;
-    position: relative;
-    left: auto;
-    top: auto;
+    position: absolute;
   }
 
 </style>

@@ -70,7 +70,7 @@
   </div>
 
 </template>
-<style>
+<style scoped>
   #seller{
     background-color: beige;
     margin: 0 auto;

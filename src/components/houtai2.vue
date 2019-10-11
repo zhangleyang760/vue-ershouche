@@ -64,15 +64,7 @@
   </div>
 
 </template>
-<style>
-  #customer{
-    margin: 0 auto;
-    text-align: center;
-  }
-  #tou{
-    margin-top: 100px;
-  }
-</style>
+
 <script>
   import axios from 'axios'
   export default{
@@ -128,3 +120,12 @@
   }
 
 </script>
+<style scoped>
+  #customer{
+    margin: 0 auto;
+    text-align: center;
+  }
+  #tou{
+    margin-top: 100px;
+  }
+</style >
