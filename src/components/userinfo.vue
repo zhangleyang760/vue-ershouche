@@ -1,5 +1,5 @@
 <template>
-  <div id="contain" align="center">
+  <div id="userinfo_contain" align="center">
     <el-button type="primary" @click="update(seller.sid)">修改个人信息</el-button>
         <div id="L_lay1">
           <div id="lab1" >PERSONAL INFORMATION</div>
