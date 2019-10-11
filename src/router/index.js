@@ -15,7 +15,7 @@ import updatehoutai3 from '@/components/updatehoutai3'
 import adminlogin from '@/components/adminlogin'
 import upload from "@/components/upload"
 import detail from "@/components/detail"
-
+import ceshi from "@/components/ceshi"
 Vue.use(Router)
 
 export default new Router({
@@ -93,7 +93,11 @@ export default new Router({
         requireAuth:true,
       },
       component:detail
-    }
+    },{
+      path:'/ceshi',
+      name:'ceshi',
+      component:ceshi
+    },
 
   ]
 })
