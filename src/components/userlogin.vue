@@ -90,7 +90,6 @@ import axios from "axios"
   }
 
   #logo{
-
     position: relative;
     width: 316px;
     height:110px;
