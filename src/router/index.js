@@ -15,6 +15,7 @@ import updatehoutai3 from '@/components/updatehoutai3'
 import adminlogin from '@/components/adminlogin'
 import upload from "@/components/upload"
 import detail from "@/components/detail"
+import realinfo from "@/components/realinfo"
 
 Vue.use(Router)
 
@@ -84,6 +85,11 @@ export default new Router({
       path:'/detail',
       name:'detail',
       component:detail
+    },{
+
+      path:'/realinfo',
+      name:'realinfo',
+      component:realinfo
     }
 
   ]
