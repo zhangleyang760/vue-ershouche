@@ -15,6 +15,7 @@ import updatehoutai3 from '@/components/updatehoutai3'
 import adminlogin from '@/components/adminlogin'
 import upload from "@/components/upload"
 import detail from "@/components/detail"
+
 Vue.use(Router)
 
 export default new Router({
@@ -78,10 +79,11 @@ export default new Router({
       path:'/upload',
       name:'upload',
       component:upload
-    },{
+  },
+    {
       path:'/detail',
       name:'detail',
-      component:detail,
+      component:detail
     }
 
   ]
