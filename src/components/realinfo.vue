@@ -22,8 +22,8 @@
         <el-input v-model="user.phone" placeholder="请输入手机号"></el-input>
       </el-form-item><br>
       <el-form-item>
-        <el-button type="primary" @click="ssubmit()">买家提交</el-button>
-        <el-button type="primary" @click="csubmit()">卖家提交</el-button>
+        <el-button type="primary" @click="csubmit()">买家提交</el-button>
+        <el-button type="primary" @click="ssubmit()">卖家提交</el-button>
       </el-form-item>
     </el-form>
     </div>
@@ -54,24 +54,20 @@
         var url='/api/srealinfo'
         axios.post(url,this.user).then(res=>{
           // alert(res.data)
-          if (res.data!=null){
+
               alert(res.data)
-            this.$router.push({name:'userlogin'});
-          }else if(res.data==null){
-            this.$router.push({name:'userReg'});
-          }
+            this.$router.push({name:'index'});
+
         })
       },
       csubmit:function () {
         var url='/api/crealinfo'
         axios.post(url,this.user).then(res=>{
           // alert(res.data)
-          if (res.data!=null){
             alert(res.data)
-            this.$router.push({name:'userlogin'});
-          }else if(res.data==null){
-            this.$router.push({name:'userReg'});
-          }
+            this.$router.push({name:'index'});
+
+
         })
       }}
 
