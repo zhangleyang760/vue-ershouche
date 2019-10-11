@@ -1,53 +1,37 @@
 <template>
   <div>
 
+
     <!--联动选择地区-->
 
 
-      <el-select size="small" style="width: 100px"
 
+      <el-select size="small" style="width: 100px"
                  v-model="selectProv"
-
                  placeholder="请选择省份"
-
                  v-on:change="getProv($event)">
-
         <el-option
-
           v-for="item in provs"
-
           :label="item.label"
-
           :value="item.value">
-
         </el-option>
-
       </el-select>
 
       <el-select size="small" style="width: 100px"
-
                  v-if="selectProv!=''"
-
                  v-model="selectCity"
-
                  placeholder="请选择城市"
-
                  v-on:change="getCity($event)">
-
         <el-option
-
           v-for="item in citys"
-
           :label="item.label"
-
           :value="item.value">
-
         </el-option>
-
       </el-select>
+      <button @click="xuanze()">选择</button>
 
 
-<button @click="xuanze()">选择</button>
+
   </div>
 </template>
 
@@ -143,13 +127,13 @@
 
       getProv: function (prov) {
 
-        let tempCity=[];
+        var tempCity=[];
 
         this.citys=[];
 
         this.selectCity='';
 
-        let allCity=[{
+        var allCity=[{
 
           prov: "北京市",
 
@@ -2426,27 +2410,20 @@
         }];
 
         for (var val of allCity){
-
           if (prov == val.prov){
-
             console.log(val);
-
             tempCity.push({label: val.label, value: val.label})
-
           }
-
         }
-
         this.citys = tempCity;
-
       },
-
       getCity: function (city) {
-
         console.log(city);
-
         console.log(this.selectCity)
-
+      },
+      xuanze:function () {
+        alert(this.selectCity)
+        alert(this.selectProv)
       }
 
 
@@ -2459,17 +2436,8 @@
 
     },
 
-    updated: function () {
 
 
-
-    },
-  methods:{
-        xuanze:function () {
-          alert(this.selectCity)
-          alert(this.selectProv)
-        }
-  }
   }
 
 </script>

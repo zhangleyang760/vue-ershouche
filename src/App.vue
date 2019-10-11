@@ -60,7 +60,7 @@ export default {
     border-bottom: 1px solid #ddd;
   }
   #headin{
-    margin-left: 920px;
+    margin-left: 600px;
   }
   .headtap{
     float: left;
