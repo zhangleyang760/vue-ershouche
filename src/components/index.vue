@@ -1,5 +1,6 @@
 <template>
     <div>
+
         <div id="headdiv">
           <div id="logo"><img src="http://pyl6emnsf.bkt.clouddn.com/logo.jpg"/></div>
           <div id="search">
@@ -68,10 +69,12 @@
 <script>
     import axios from 'axios'
     import ElInput from "../../node_modules/element-ui/packages/input/src/input";
+
     export default{
       components: {ElInput},
       data(){
             return {
+
                 typeOn:'不限',
                 brandOn:'不限',
                 priceOn:'不限',
@@ -81,6 +84,7 @@
                   currentPage:1,
                   size:5,
                 },
+
                 typeList:[
                   '不限', '轿车', '越野车','MPV','跑车','面包车','皮卡','新能源','工程车','货车','客车','三轮机动车','老年代步车'
                 ],

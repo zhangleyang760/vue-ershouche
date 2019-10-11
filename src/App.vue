@@ -6,6 +6,7 @@
           <div class="headtap"><router-link to="/">首页</router-link></div>
           <div class="headtap"><router-link to="/userlogin">登录</router-link>|<router-link to="/userReg">注册</router-link> </div>
           <div class="headtap"><router-link to="/userinfo">个人中心</router-link></div>
+
           <div class="headtap"><a >商家中心</a> </div>
           <div class="headtap"><a >帮助中心</a> </div>
           <div class="headtap"><a >联系客服</a> </div>
@@ -51,7 +52,7 @@ export default {
     border-bottom: 1px solid #ddd;
   }
   #headin{
-    margin-left: 975px;
+    margin-left: 605px;
   }
   .headtap{
     float: left;
