@@ -53,6 +53,7 @@
       <!--<el-input v-model="users.cname" placeholder="请再次输入车主姓名"></el-input>-->
       <!--<el-input v-model="users.brand" placeholder="请再次输入品牌"></el-input>-->
       <el-upload
+        id="UP1"
         class="avatar-uploader"
         action="api/uploadPic"
         :show-file-list="false"
@@ -64,7 +65,7 @@
 
       <!--<el-button type="primary" round @click=uploadPic() >提交</el-button>-->
 
-      <el-button type="primary" round  @click=upload()>上传数据</el-button>
+      <el-button  id="btn1" type="primary" round  @click=upload()>上传数据</el-button>
       <!--</form>-->
 
       <!--<el-button style="margin-top: 12px;" @click="next">下一步</el-button>-->
@@ -82,7 +83,27 @@
       <!--<input type="file" value="pic3" placeholder="副图2" v-on="users.pic3"><br/>-->
       <!--<input type="file" value="pic4" placeholder="副图3" v-on="users.pic4"><br/>-->
       <!--<input type="submit" value="提交" @click=upload() />-->
-
+        <!--<el-upload-->
+          <!--class="upload-demo"-->
+          <!--action="api/uploadPic1"-->
+          <!--:on-preview="handlePreview"-->
+          <!--:on-remove="handleRemove"-->
+          <!--:file-list="fileList"-->
+          <!--list-type="picture">-->
+          <!--<el-button size="small" type="primary">点击上传</el-button>-->
+          <!--<div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>-->
+        <!--</el-upload>-->
+        <el-upload
+          id="UP2"
+          class="avatar-uploader"
+          action="api/uploadPic1"
+          :show-file-list="false"
+          :on-success="handleAvatarSuccess2"
+          :before-upload="beforeAvatarUpload">
+          <img v-if="imageUrl1" :src="imageUrl1" class="avatar">
+          <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+        </el-upload>
+        <el-button id="btn2" type="primary" round  @click=uploadCarpic()>上传副图</el-button>
       <!--</form>-->
       </el-form>
     </div>
@@ -95,6 +116,7 @@
       return{
 //        active:0,
         imageUrl: '',
+        imageUrl1:'',
         users:{
           cname:'',
           brand:'',
@@ -105,15 +127,30 @@
           mileage:'',
           color:'',
           pic:'',
+        },
+        cars:{
+            pic:''
         }
+
       }
     },
     methods:{
-      upload:function () {
+      upload:function (x) {
         var url='api/upload'
         axios.post(url,this.users).then(res=>{
           if(res.data!=null){
-            this.$router.push({name:'userinfo'})
+//            this.$router.push({name:'userinfo'})
+            alert("上传成功")
+          }else {
+            alert("上传失败")
+          }
+        })
+      },
+      uploadCarpic:function (x) {
+        var url='api/uploadCarpic'
+        axios.post(url,this.cars).then(res=>{
+          if(res.data!=null){
+//            this.$router.push({name:'userinfo'})
             alert("上传成功")
           }else {
             alert("上传失败")
@@ -129,6 +166,10 @@
 //
 //        })
 //      },
+      handleAvatarSuccess2(res, file) {
+        this.imageUrl1 = URL.createObjectURL(file.raw);
+        this.cars.pic=res;
+      },
       handleAvatarSuccess(res, file) {
         this.imageUrl = URL.createObjectURL(file.raw);
         this.users.pic=res;
@@ -144,7 +185,9 @@
           this.$message.error('上传头像图片大小不能超过 2MB!');
         }
         return isJPG && isLt2M;
-      }
+      },
+
+
 
     }
 
@@ -184,6 +227,25 @@
   }
   el-input{
     width: 800px;
-
+  }
+  #UP1{
+    position: absolute;
+    left: 300px;
+    top:650px;
+  }
+  #UP2{
+    position: absolute;
+    left: 900px;
+    top: 650px;
+  }
+  #btn1{
+    position: absolute;
+    left:340px;
+    top: 850px;
+  }
+  #btn2{
+    position: absolute;
+    left:940px;
+    top: 850px;
   }
 </style>
