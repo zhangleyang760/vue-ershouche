@@ -110,7 +110,7 @@ import axios from "axios"
   nav.vertical ul li{display:block;}
   nav.horizontal ul li{display: inline-block;}
   img{max-width:100%;}
-  
+
   #userlogin {
     width:1519.2px;
     height: 690px;
