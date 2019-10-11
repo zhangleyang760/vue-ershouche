@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="adminlogin">
     <h1>后台登录</h1><br>
     <el-form :inline="true" :model="user" class="demo-form-inline">
 
@@ -44,15 +44,10 @@ import axios from "axios"
     }
   }
 </script>
-<style scoped>
-  #app {
-    /*font-family: 'Avenir', Helvetica, Arial, sans-serif;*/
-    /*-webkit-font-smoothing: antialiased;*/
-    /*-moz-osx-font-smoothing: grayscale;*/
-    /**/
-    /*color: #2c3e50;*/
-    /*margin-top: 100px;*/
-    text-align: center;
+<style>
 
+  #bigdiv{
+    text-align: center;
   }
+
 </style>

@@ -1,28 +1,33 @@
 <template>
-  <div>
+  <div id="userReg">
     <div class="container w3layouts agileits">
     <h1>用户注册</h1><br>
-    <el-form :inline="true" :model="user" class="demo-form-inline">
-      <el-form-item label="注册邮箱：">
-        <el-input v-model="user.email" placeholder="请输入QQ邮箱"></el-input>
-      </el-form-item><br>
-      <el-form-item>
-        <el-button type="primary" @click="getcode()">获取验证码</el-button>
-      </el-form-item><br>
-      <el-form-item label="验证：">
-        <el-input v-model="user.code" placeholder="请输入验证码"></el-input>
-      </el-form-item><br>
-      <el-form-item label="账户名：">
-        <el-input v-model="user.username" placeholder="请输入用户名"></el-input>
-      </el-form-item><br>
-      <el-form-item label="密码：">
-        <el-input v-model="user.password" placeholder="请输入密码" show-password></el-input>
-      </el-form-item><br>
+    <form :inline="true" :model="user" class="demo-form-inline">
 
-      <el-form-item>
-        <el-button type="primary" @click="submit()">注册</el-button>
-      </el-form-item>
-    </el-form>
+        <input v-model="user.email" type="text" placeholder="请输入QQ邮箱">
+
+      <div class="send-button w3layouts agileits">
+        <form>
+          <input type="submit"@click="getcode()" value="获取验证码">
+        </form>
+      </div>
+
+
+
+        <input v-model="user.code" type="text" placeholder="请输入验证码">
+
+
+        <input v-model="user.username"  type="text" placeholder="请输入用户名">
+
+
+        <input v-model="user.password" type="text" placeholder="请输入密码" show-password>
+      <div class="send-button w3layouts agileits">
+        <form>
+          <input type="submit" @click="submit()" value="注册">
+        </form>
+      </div>
+
+    </form>
     </div>
     <div class="footer w3layouts agileits">
       <p>Copyright &copy; More Templates</p>
@@ -32,7 +37,12 @@
 </template>
 <script>
   import axios from "axios"
+  import ElFormItem from "../../node_modules/element-ui/packages/form/src/form-item";
+  import ElForm from "../../node_modules/element-ui/packages/form/src/form";
   export default{
+    components: {
+      ElForm,
+      ElFormItem},
     name:'',
     data(){
       return{
@@ -70,15 +80,7 @@
   }
 </script>
 <style scoped>
-  #app {
-    /*font-family: 'Avenir', Helvetica, Arial, sans-serif;*/
-    /*-webkit-font-smoothing: antialiased;*/
-    /*-moz-osx-font-smoothing: grayscale;*/
-    /*color: #2c3e50;*/
-    /*margin-top: 100px;*/
-    text-align: center;
-    height: 620px;
-  }
+
 
   #logo{
 
@@ -114,9 +116,8 @@
 
 
 
-  /*-- Index-Page-Styling --*/
 
-  body {
+#userReg{
     font-family: 'Roboto', sans-serif;
     text-align: center;
     background: url("http://pyl6emnsf.bkt.clouddn.com/background1.jpg");
@@ -128,6 +129,7 @@
     -moz-background-size: cover;
     -o-background-size: cover;
   }
+
 
   #bottom{
     margin-top: 80px;
@@ -151,9 +153,9 @@
   }
 
   .container {
-    width: 50%;
+    width: 35%;
     margin: 0 auto;
-    padding: 40px;
+    padding: 60px;
     background-color: rgba(10, 10, 10, 0.77);
     border: 2px ridge rgba(238, 238, 238, 0.13);
     border-radius: 5px;
@@ -380,7 +382,7 @@
 
   .footer {
     text-align: center;
-    margin: 100px 20px 20px;
+    margin: 100px 20px 0px;
   }
   .footer p {
     color: #CCC;

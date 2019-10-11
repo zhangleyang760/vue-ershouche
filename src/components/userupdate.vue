@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="userupdate">
 
     用户姓名：<el-input  v-model="seller.sname" placeholder="请输入密码"></el-input>
 
