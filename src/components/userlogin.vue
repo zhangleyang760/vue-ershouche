@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="userlogin">
     <!--<el-form :inline="true" :model="user" class="demo-form-inline">-->
 
       <!--<el-form-item label="账户名：">-->
@@ -82,16 +82,6 @@ import axios from "axios"
   }
 </script>
 <style scoped>
-  #app {
-    /*font-family: 'Avenir', Helvetica, Arial, sans-serif;*/
-    /*-webkit-font-smoothing: antialiased;*/
-    /*-moz-osx-font-smoothing: grayscale;*/
-    /*color: #2c3e50;*/
-    /*margin-top: 100px;*/
-    text-align: center;
-    height: 620px;
-  }
-
   #logo{
     position: relative;
     width: 316px;
@@ -120,17 +110,13 @@ import axios from "axios"
   nav.vertical ul li{display:block;}
   nav.horizontal ul li{display: inline-block;}
   img{max-width:100%;}
-
-  /*-- Reset Code --*/
-
-
-
-  /*-- Index-Page-Styling --*/
-
-  body {
+  
+  #userlogin {
+    width:1519.2px;
+    height: 690px;
     font-family: 'Roboto', sans-serif;
     text-align: center;
-    background: url("http://pyl6emnsf.bkt.clouddn.com/background1.jpg");
+    background: url("../../static/images/background1.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
@@ -140,8 +126,13 @@ import axios from "axios"
     -o-background-size: cover;
   }
 
+
+  /*-- Index-Page-Styling --*/
+
+
 #bottom{
-  margin-top: 80px;
+  position: relative;
+  top: 80px;
   width: 300px;
 }
   body a {

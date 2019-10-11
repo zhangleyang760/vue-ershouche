@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div id="detail">
       <div id="headdiv">
         <div id="logo"><img src="http://pyl6emnsf.bkt.clouddn.com/logo.jpg"/></div>
         <div id="post"><a href="">免费发布信息</a></div>
