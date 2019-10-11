@@ -108,6 +108,7 @@
         返回首页<i class="el-icon-right" @click=skip()></i>
       </el-form>
     </div>
+
   </div>
 </template>
 <script>
