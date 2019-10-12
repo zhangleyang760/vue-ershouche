@@ -6,7 +6,7 @@
             <input placeholder="请输入关键字查找" v-model="this.searchTag.name" ref="name" />
             <a @click="inputName">搜车源</a>
           </div>
-          <div id="post"><a href="/#/upload">免费发布</a></div>
+          <div id="post"><a @click="upload">免费发布</a></div>
         </div>
       <div id="main">
         <div id="filter">
@@ -142,6 +142,7 @@
 
         },
         methods: {
+
           findAll:function () {
               axios.post('/api/index',{
                 name:this.searchTag.name,
@@ -168,6 +169,7 @@
                   val='';
               }
               this.searchTag.type=val;
+              this.param.currentPage=1;
               this.findAll();
 
           },
@@ -177,6 +179,7 @@
               val='';
             }
             this.searchTag.brand=val;
+            this.param.currentPage=1;
             this.findAll();
           },
           selectColor:function (val) {
@@ -185,6 +188,7 @@
               val='';
             }
             this.searchTag.color=val;
+            this.param.currentPage=1;
             this.findAll();
           },
           selectPrice:function (val,name) {
@@ -194,13 +198,16 @@
             }
             this.searchTag.minPrice=val[0];
             this.searchTag.maxPrice=val[1];
+            this.param.currentPage=1;
             this.findAll();
           },
           inputName:function () {
             this.searchTag.name=this.$refs.name.value;
+            this.param.currentPage=1;
             this.findAll();
           },
           reset:function () {
+              this.param.currentPage=1;
               this.typeOn='不限';
               this.brandOn='不限';
               this.priceOn='不限';
@@ -214,17 +221,30 @@
               this.findAll();
           },
           detail:function (id) {
-            this.$router.push({name:'detail',params:{cid:id}});
+            axios.get('/api/checkLogin').then(res => {
+              if (res.data != null && res.data =="未登录"){
+                this.$router.push({name: 'userlogin'});
+              }else {
+                this.$router.push({name:'detail',params:{cid:id}});
+              }
+            });
+
+          },
+          upload:function () {
+            var url = '/api/checkLogin'
+            axios.get(url).then(res => {
+
+              if (res.data != null && res.data =="成功") {
+                this.$router.push({name: 'upload'});
+              }else if (res.data != null && res.data =="未登录"){
+                this.$router.push({name: 'userlogin'});
+              }
+            })
           }
 
         }
     }
 </script>
-<style>
-  body{
-
-  }
-</style>
 <style>
   a, abbr, acronym, address, applet, big, blockquote, body, caption, cite, code, dd, del, dfn, div, dl, dt, em, fieldset, font, form, h1, h2, h3, h4, h5, h6, iframe, ins, kbd, label, legend, li, object, ol, p, pre, q, s, samp, small, span, strike, strong, sub, sup, table, tbody, td, tfoot, th, thead, tr, tt, ul, var {
     font-family: microsoft yahei,arial,"\5B8B\4F53",sans-serif;
@@ -232,6 +252,7 @@
   html{
     width: 100%;
   }
+
   #headdiv{
   height: 104px;
 }
@@ -389,17 +410,18 @@
     background-color: white;
   }
   #carList .car{
+    margin-right: 0;
     height: 150px;
-    padding: 20px 0 20px 0;
+    padding: 15px 0 15px 0;
     border-bottom: 1px solid #f2f2f2;
     width: 950px;
+    position: relative;
+    left: 10px;
   }
   #carList .car:hover{
     background-color:#FCFCFC ;
   }
-  .car{
-    position: relative;
-  }
+
   .car .brandAndName{
     position: absolute;
     left: 23%;

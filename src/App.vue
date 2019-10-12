@@ -5,7 +5,7 @@
         <div id="headin">
           <div class="headtap"><router-link to="/">首页</router-link></div>
           <div class="headtap"><router-link to="/userlogin">登录</router-link>|<router-link to="/userReg">注册</router-link> </div>
-          <div class="headtap"><router-link to="/userinfo">个人中心</router-link></div>
+          <div class="headtap"><a @click="userinfo">个人中心</a></div>
           <div class="headtap"><a >商家中心</a> </div>
           <div class="headtap"><a >帮助中心</a> </div>
           <div class="headtap"><a >联系客服</a> </div>
@@ -24,6 +24,7 @@
   import axios from "axios"
 export default {
   methods: {
+
     loginout: function () {
 
       var url = '/api/loginout'
@@ -34,7 +35,21 @@ export default {
           this.$router.push({name: 'userlogin'});
         }
       })
+    },
+    userinfo: function () {
+
+      var url = '/api/checkLogin'
+      axios.get(url).then(res => {
+
+        if (res.data != null && res.data =="成功") {
+          this.$router.push({name: 'userinfo'});
+        }else if (res.data != null && res.data =="未登录"){
+          this.$router.push({name: 'userlogin'});
+        }
+      })
     }
+
+
   }
   }
 </script>
@@ -45,9 +60,13 @@ export default {
     margin: 0;
     padding: 0;
     border: 0;
+    text-decoration: none;
     font-size: 100%;
     font-style: inherit;
     font-weight: inherit;
+  }
+  a{
+    cursor: pointer;
   }
   #app{
 
