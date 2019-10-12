@@ -1,6 +1,6 @@
 <template>
   <div id="upload_contain">
-    <div id="outline"align="center">
+    <div id="outline" align="center">
       <el-form :inline="true" :model="users" class="demo-form-inline">
       <!--<el-steps :active="active" align-center>-->
       <!--<el-step title="步骤1" description="这是一段很长很长很长的描述性文字"></el-step>-->
@@ -20,10 +20,26 @@
           <el-input v-model="users.brand" placeholder="请输入品牌"></el-input>
         </el-form-item><br>
           <i class="el-icon-info"></i>&nbsp;&nbsp;&nbsp;&nbsp; <el-form-item label="描述：">
-          <el-input v-model="users.miaoshu" placeholder="请输入描述"></el-input>
+        <el-input
+          type="textarea"
+          :rows="2"
+          placeholder="请输入描述"
+          v-model="textarea">
+        </el-input>
         </el-form-item><br>
           <i class="el-icon-price-tag"></i>&nbsp;&nbsp;&nbsp;&nbsp;<el-form-item label="类型：">
-          <el-input v-model="users.ctype" placeholder="请输入类型"></el-input>
+        <el-row class="demo-autocomplete">
+          <el-col :span="12">
+            <el-autocomplete
+              class="inline-input"
+              v-model="state1"
+              style="width: 202px"
+              :fetch-suggestions="querySearch"
+              placeholder="请输入类型"
+              @select="handleSelect"
+            ></el-autocomplete>
+          </el-col>
+        </el-row>
         </el-form-item><br>
           <i class="el-icon-coin"></i>&nbsp;&nbsp;&nbsp;&nbsp;<el-form-item label="价格：">
           <el-input v-model="users.price" placeholder="请输入价格"></el-input>
@@ -132,7 +148,11 @@
         },
         cars:{
             pic:''
-        }
+        },
+        textarea:'',
+        restaurants: [],
+        state1: '',
+
 
       }
     },
@@ -191,9 +211,36 @@
         }
         return isJPG && isLt2M;
       },
-
-
-
+      querySearch(queryString, cb) {
+        var restaurants = this.restaurants;
+        var results = queryString ? restaurants.filter(this.createFilter(queryString)) : restaurants;
+        // 调用 callback 返回建议列表的数据
+        cb(results);
+      },
+      createFilter(queryString) {
+        return (restaurant) => {
+          return (restaurant.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0);
+        };
+      },
+      loadAll() {
+        return [
+          {"value":"越野车"},
+          {"value":"轿车"},
+          {"value":"皮卡"},
+          {"value":"工程车"},
+          {"value":"新能源"},
+          {"value":"货车"},
+          {"value":"三轮机动车"},
+          {"value":"面包车"},
+          {"value":"老年代步车"},
+        ];
+      },
+      handleSelect(item) {
+        console.log(item);
+      }
+    },
+    mounted(){
+      this.restaurants = this.loadAll();
     }
 
   }
@@ -202,6 +249,12 @@
   #upload_contain{
     width:1349px;
     height: 1200px;
+    background: url("../../static/images/bgi.jpg");
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size:cover ;
+
   }
   #outline{
     width:1349px;
@@ -288,5 +341,9 @@
   .el-icon-magic-stick{
     font-size: 25px;
     padding-top: 6px;
+  }
+  label{
+    font-weight: bolder;
+    color: aliceblue;
   }
 </style>
