@@ -16,6 +16,8 @@ import adminlogin from '@/components/adminlogin'
 import upload from "@/components/upload"
 import detail from "@/components/detail"
 import ceshi from "@/components/ceshi"
+import realinfo from "@/components/realinfo"
+// import userupdate from "@/components/userupdate"
 Vue.use(Router)
 
 export default new Router({
@@ -23,9 +25,7 @@ export default new Router({
     {
       path:"/userinfo",
       name:'userinfo',
-      meta:{
-        requireAuth:true,
-      },
+
       component:userinfo
     },{
       path:'/houtai',
@@ -81,22 +81,22 @@ export default new Router({
 
       path:'/upload',
       name:'upload',
-      meta:{
-        requireAuth:true,
-      },
+
       component:upload
     },
     {
       path:'/detail',
       name:'detail',
-      meta:{
-        requireAuth:true,
-      },
+
       component:detail
     },{
       path:'/ceshi',
       name:'ceshi',
       component:ceshi
+    },{
+      path:'/realinfo',
+      name:'realinfo',
+      component:realinfo
     },
 
   ]

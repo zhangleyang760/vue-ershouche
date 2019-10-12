@@ -80,12 +80,23 @@
 </template>
 <style scoped>
   #car{
-   margin: 0 auto;
+    width:100%;
+    height: 600px;
+    line-height: 20px;
     text-align: center;
-    background-color: cornsilk;
+    font-family: 'Roboto', sans-serif;
+    background:  url("../../static/images/11111.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    color: ivory;
   }
   #tou{
-    background-color: cornsilk;
+
   }
   .el-table .warning-row {
     background: oldlace;

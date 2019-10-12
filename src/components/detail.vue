@@ -20,21 +20,35 @@
         <div id="info">
           <span id="price">￥<span v-text="this.car.price"></span> 万元</span><span id="guohu">(含过户费)</span>
           <div id="msg">
-            <div>
-              <span class="msgList">品牌</span>
-              <span class="msgList">表显里程</span>
-              <span class="msgList">车龄</span>
-              <span class="msgList">车类</span>
-            </div>
-            <el-divider></el-divider>
-            <div>
+            <div id="msgList">
+              <li>
+              <span class="msgList">品牌</span><br/>
               <span class="msgVue" v-text="this.car.brand"></span>
+              </li>
+              <li>
+              <span class="msgList">表显里程</span><br/>
               <span class="msgVue" v-text="this.car.mileage+'万公里'"></span>
+              </li>
+              <li>
+              <span class="msgList">车龄</span><br/>
               <span class="msgVue" v-text="this.car.cyear+'年'"></span>
+              </li>
+              <li>
+              <span class="msgList">车类</span><br/>
               <span class="msgVue" v-text="this.car.ctype"></span>
+              </li>
             </div>
           </div>
         </div>
+        <el-popover
+          placement="right"
+          width="400"
+          trigger="click">
+          <div style="width: 500px;height: 50px">
+            12222222
+          </div>
+          <el-button slot="reference">click 激活</el-button>
+        </el-popover>
         <div id="tel">
           <i class="el-icon-phone-outline" ></i><span>查看电话号码</span>
         </div>
@@ -108,6 +122,13 @@
     outline: 0px;
     padding: 0px;
   }
+  #detail{
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    background-color: #f5f5f5;
+    line-height: 1;
+  }
   #headdiv{
     height: 104px;
     background-color: white;
@@ -141,13 +162,6 @@
     padding: 0;
     vertical-align: baseline;
   }
-  body{
-    margin: 0;
-    padding: 0;
-    font-size: 12px;
-    background-color: #f5f5f5;
-    line-height: 1;
-  }
   #post a{
     text-decoration:none;
     margin-top: 30px;
@@ -164,9 +178,9 @@
     height: 473px;
     position: relative;
     background-color: white;
-    width: 80%;
-    margin-left: 10%;
-    margin-right: 10%;
+    width: 1215.35px;
+    margin-left: 151.91px;
+    margin-right: 151.91px;
     margin-top: 50px;
     padding: 30px;
   }
@@ -214,10 +228,10 @@
     width: 637px;
     background-color: #fbfafa;
     position: absolute;
-    left: 44%;
+    left: 561px;
     top: 91px;
     padding: 20px;
-    padding-bottom: 47px;
+    padding-bottom: 74px;
   }
   #info #price{
     font-size: 24px;
@@ -235,32 +249,34 @@
     color: #666;
   }
   #info #msg{
-    top: 25px;
+    top: 35px;
     position: relative;
     padding: 35px 0;
     overflow: hidden;
-    width: 500px;
+    width: 520px;
+    border-bottom: 1px dotted #e0e0e0;
   }
-  #info #msg .msgList{
-    left: 34px;
-    top: -8px;
-    position: relative;
+  #info #msg li{
     float: left;
-    display:block;
-    color: #9b9b9b;
-    font-size: 18px;
-    width: 108px;
-  }
-  #info #msg .msgVue{
-    position: relative;
-    left: 35px;
-    top: -13px;
-    float: left;
-    width: 108px;
-    display: block;
-    margin-top: 5px;
+    width: 80px;
+    height: 60px;
+    border-right: 1px dotted #e0e0e0;
+    text-align: center;
+    padding: 0 15px;
     font-size: 16px;
     color: #666;
+    list-style: none;
+  }
+  #info #msg .msgList{
+    color: #9b9b9b;
+    font-size: 15px;
+    margin-top: 19px;
+    margin-bottom: 5px;
+  }
+  #info #msg .msgVue{
+    display: block;
+    margin-top: 12px;
+    font-size: 16px;
   }
   #tel{
     position: absolute;
@@ -283,7 +299,7 @@
     top: 450px;
     line-height: 20px;
    width: 600px;
-    left: 44%;
+    left: 561px;
     margin: 0px;
   }
 

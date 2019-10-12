@@ -33,13 +33,24 @@ export default {
     this.showUser();
   },
   methods: {
-    loginout: function () {
 
+    loginout: function () {
       var url = '/api/loginout'
       axios.get(url).then(res => {
-
         if (res.data != null && res.data =="退出成功") {
           //alert(res.data)
+          this.$router.push({name: 'index'});
+        }
+      })
+    },
+    userinfo: function () {
+
+      var url = '/api/checkLogin'
+      axios.get(url).then(res => {
+
+        if (res.data != null && res.data =="成功") {
+          this.$router.push({name: 'userinfo'});
+        }else if (res.data != null && res.data =="未登录"){
           this.$router.push({name: 'userlogin'});
         }
       })
@@ -60,6 +71,8 @@ export default {
     login:function () {
       this.$router.push('/userlogin')
     }
+
+
   }
   }
 </script>
@@ -70,9 +83,13 @@ export default {
     margin: 0;
     padding: 0;
     border: 0;
+    text-decoration: none;
     font-size: 100%;
     font-style: inherit;
     font-weight: inherit;
+  }
+  a{
+    cursor: pointer;
   }
   #app{
 
