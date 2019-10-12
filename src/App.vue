@@ -4,7 +4,8 @@
       <div id="head">
         <div id="headin">
           <div class="headtap"><router-link to="/">首页</router-link></div>
-          <div class="headtap"><router-link to="/userlogin">登录</router-link>|<router-link to="/userReg">注册</router-link> </div>
+          <div   v-if="showname" class="headtap"><router-link to="/userlogin">登录</router-link>|<router-link to="/userReg">注册</router-link></div>
+          <div   v-if="!showname" class="headtap"><a>{{names}}</a> |<a @click="loginout()" >注销</a></div>
           <div class="headtap"><router-link to="/userinfo">个人中心</router-link></div>
           <div class="headtap"><a >商家中心</a> </div>
           <div class="headtap"><a >帮助中心</a> </div>
@@ -12,7 +13,6 @@
           <div class="headtap"><a >网站导航</a> </div>
           <div class="headtap"><router-link to="/adminlogin">后台管理</router-link> </div>
           <div class="headtap"><router-link to="/realinfo">实名认证</router-link></div>
-          <div class="headtap" ><a  @click="loginout()">注销</a> </div>
         </div>
       </div>
     </div>
@@ -23,6 +23,15 @@
 <script>
   import axios from "axios"
 export default {
+  data() {
+    return {
+      showname:true,
+      names:'',
+    };
+  },
+  mounted(){
+    this.showUser();
+  },
   methods: {
     loginout: function () {
 
@@ -34,6 +43,22 @@ export default {
           this.$router.push({name: 'userlogin'});
         }
       })
+    },showUser:function () {
+      var url="/api/getUserSession";
+      var _this=this;
+      axios.post(url).then(res=>{
+        if(res.data==null||res.data==""){
+          _this.showname=true;
+        }else {
+          _this.names=res.data;
+          _this.showname=false;
+        }
+      })
+    },registered:function () {
+      this.$router.push('/userReg')
+    },
+    login:function () {
+      this.$router.push('/userlogin')
     }
   }
   }
