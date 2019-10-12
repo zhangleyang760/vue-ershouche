@@ -76,6 +76,14 @@
 </script>
 <style>
 
+  #userinfo_contain{
+    background: url("../../static/images/info.jpg");
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size:cover ;
+  }
+
   #lay2{
     width:1100px;
     height: 500px;
