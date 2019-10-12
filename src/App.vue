@@ -6,8 +6,6 @@
         <div  v-if="showname" class="headtap"><router-link to="/userlogin">登录</router-link>|<router-link to="/userReg">注册</router-link></div>
         <div  v-if="!showname" class="headtap"><a>{{names}}</a> |<a @click="loginout()" >注销</a></div>
         <div class="headtap"><a @click="userinfo">个人中心</a></div>
-        <div class="headtap"><a >商家中心</a> </div>
-        <div class="headtap"><a >帮助中心</a> </div>
         <div class="headtap"><a >联系客服</a> </div>
         <div class="headtap"><a >网站导航</a> </div>
         <div class="headtap"><router-link to="/adminlogin">后台管理</router-link> </div>
@@ -30,14 +28,22 @@ export default {
   mounted(){
     this.showUser();
   },
+  watch: {
+    '$route' (to, from) { //监听路由是否变化
+      if(to.path == "/"){ //跳转到哪个页面
+        location.reload()
+      }
+    },
+  },
   methods: {
 
     loginout: function () {
       var url = '/api/loginout'
       axios.get(url).then(res => {
         if (res.data != null && res.data =="退出成功") {
-          //alert(res.data)
+            location.reload();
           this.$router.push({name: 'index'});
+
         }
       })
     },
@@ -63,14 +69,7 @@ export default {
           _this.showname=false;
         }
       })
-    },registered:function () {
-      this.$router.push('/userReg')
-    },
-    login:function () {
-      this.$router.push('/userlogin')
     }
-
-
   }
   }
 </script>
@@ -99,7 +98,7 @@ export default {
   }
   #headin{
     overflow: hidden;
-    margin-left: 834px;
+    margin-left: 936px;
   }
   .headtap{
     float: left;
