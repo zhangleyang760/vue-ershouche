@@ -23,9 +23,7 @@ export default new Router({
     {
       path:"/userinfo",
       name:'userinfo',
-      meta:{
-        requireAuth:true,
-      },
+
       component:userinfo
     },{
       path:'/houtai',
@@ -81,17 +79,13 @@ export default new Router({
 
       path:'/upload',
       name:'upload',
-      meta:{
-        requireAuth:true,
-      },
+
       component:upload
     },
     {
       path:'/detail',
       name:'detail',
-      meta:{
-        requireAuth:true,
-      },
+
       component:detail
     },{
       path:'/ceshi',

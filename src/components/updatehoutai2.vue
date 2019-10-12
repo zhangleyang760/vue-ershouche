@@ -34,9 +34,9 @@
     <el-button type="primary" @click="update()">修改</el-button>
   </div>
 </template>
-<style>
+<style scoped>
   #customer{
-    width:1209.2px;
+    width:100%;
     height: 600px;
     line-height: 20px;
     text-align: center;

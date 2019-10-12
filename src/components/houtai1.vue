@@ -8,7 +8,7 @@
     <el-table
       :data="seller"
       stripe
-      style="width: 100%">
+      style="width: 100%; opacity: "  >
 
       <el-table-column
         prop="cid"
@@ -72,13 +72,22 @@
 </template>
 <style scoped>
   #seller{
-    background-color: beige;
-    margin: 0 auto;
+    width:100%;
+    height: 600px;
+    line-height: 20px;
     text-align: center;
+    font-family: 'Roboto', sans-serif;
+    background:  url("../../static/images/11111.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    color: ivory;
   }
-  #tou{
-    margin-top: 100px;
-  }
+
 </style>
 <script>
   import axios from 'axios'
@@ -100,7 +109,7 @@
       },
       toupdate:function (sid) {
         this.$router.push('/updatehoutai1/'+sid)
-        alert(sid)
+
       },
 
       todelete: function (sid) {

@@ -67,7 +67,7 @@ import axios from "axios"
               // alert(res.data)
                 if (res.data!=null&&res.data==this.user.username){
                     //alert(res.data)
-                  this.$store.commit('$_setStorage', {user: this.user});
+//                  this.$store.commit('$_setStorage', {user: this.user.username});
                 this.$router.push({name:'index'});
 
                 }else {
