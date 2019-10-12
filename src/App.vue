@@ -9,7 +9,7 @@
         <div class="headtap"><a >联系客服</a> </div>
         <div class="headtap"><a >网站导航</a> </div>
         <div class="headtap"><router-link to="/adminlogin">后台管理</router-link> </div>
-        <div class="headtap"><router-link to="/realinfo">实名认证</router-link></div>
+        <div class="headtap"><a @click="realinfo">实名认证</a></div>
       </div>
     </div>
     <router-view/>
@@ -54,6 +54,18 @@ export default {
 
         if (res.data != null && res.data =="成功") {
           this.$router.push({name: 'userinfo'});
+        }else if (res.data != null && res.data =="未登录"){
+          this.$router.push({name: 'userlogin'});
+        }
+      })
+    },
+    realinfo: function () {
+
+      var url = '/api/checkLogin'
+      axios.get(url).then(res => {
+
+        if (res.data != null && res.data =="成功") {
+          this.$router.push({name: 'realinfo'});
         }else if (res.data != null && res.data =="未登录"){
           this.$router.push({name: 'userlogin'});
         }
