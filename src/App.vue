@@ -4,6 +4,7 @@
       <div id="head">
         <div id="headin">
           <div class="headtap"><router-link to="/">首页</router-link></div>
+
           <div class="headtap"><router-link to="/userlogin">登录</router-link>|<router-link to="/userReg">注册</router-link> </div>
           <div class="headtap"><a @click="userinfo">个人中心</a></div>
           <div class="headtap"><a >商家中心</a> </div>
@@ -12,7 +13,7 @@
           <div class="headtap"><a >网站导航</a> </div>
           <div class="headtap"><router-link to="/adminlogin">后台管理</router-link> </div>
           <div class="headtap"><router-link to="/realinfo">实名认证</router-link></div>
-          <div class="headtap" ><a  @click="loginout()">注销</a> </div>
+          <div class="headtap"><a @click="loginout()">退出登录</a></div>
         </div>
       </div>
     </div>
@@ -26,13 +27,11 @@ export default {
   methods: {
 
     loginout: function () {
-
       var url = '/api/loginout'
       axios.get(url).then(res => {
-
         if (res.data != null && res.data =="退出成功") {
           //alert(res.data)
-          this.$router.push({name: 'userlogin'});
+          this.$router.push({name: 'index'});
         }
       })
     },
@@ -79,7 +78,7 @@ export default {
     border-bottom: 1px solid #ddd;
   }
   #headin{
-    margin-left: 920px;
+    margin-left: 600px;
   }
   .headtap{
     float: left;

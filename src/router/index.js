@@ -15,7 +15,9 @@ import updatehoutai3 from '@/components/updatehoutai3'
 import adminlogin from '@/components/adminlogin'
 import upload from "@/components/upload"
 import detail from "@/components/detail"
-
+import ceshi from "@/components/ceshi"
+import realinfo from "@/components/realinfo"
+// import userupdate from "@/components/userupdate"
 Vue.use(Router)
 
 export default new Router({
@@ -23,6 +25,7 @@ export default new Router({
     {
       path:"/userinfo",
       name:'userinfo',
+
       component:userinfo
     },{
       path:'/houtai',
@@ -78,13 +81,23 @@ export default new Router({
 
       path:'/upload',
       name:'upload',
+
       component:upload
     },
     {
       path:'/detail',
       name:'detail',
+
       component:detail
-    }
+    },{
+      path:'/ceshi',
+      name:'ceshi',
+      component:ceshi
+    },{
+      path:'/realinfo',
+      name:'realinfo',
+      component:realinfo
+    },
 
   ]
 })

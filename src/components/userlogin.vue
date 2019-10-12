@@ -67,9 +67,9 @@ import axios from "axios"
               // alert(res.data)
                 if (res.data!=null&&res.data==this.user.username){
                     //alert(res.data)
-                  this.$store.commit('$_setStorage', {user: this.user});
+//                  this.$store.commit('$_setStorage', {user: this.user.username});
                 this.$router.push({name:'index'});
-                Cookies.set('username',this.user.username,30);
+
                 }else {
                     alert("您输入的账户或密码有误，请重新输入");
                 }

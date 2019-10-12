@@ -1,122 +1,48 @@
 <template>
+  <div>
 
 
-    <div id="user">
-      <div id="tital2"><h1>用户信息修改</h1></div>
+    <!--联动选择地区-->
 
-      <div id="sname2"> 用户姓名：<el-input  v-model="seller.sname" style="width: 600px"></el-input><br></div>
 
-      <div id="provice2"> 省份：<el-select size="small" style="width: 600px" style="height: 40px"
-                                       v-model="seller.provice"
-                                       placeholder="请选择省份"
-                                       v-on:change="getProv($event)">
+
+      <el-select size="small" style="width: 100px"
+                 v-model="selectProv"
+                 placeholder="请选择省份"
+                 v-on:change="getProv($event)">
         <el-option
           v-for="item in provs"
           :label="item.label"
           :value="item.value">
         </el-option>
-      </el-select><br></div>
+      </el-select>
 
-      <div id="city2"> 城市：<el-select size="small" style="width: 600px"
-
-                                    v-model="seller.city"
-                                    placeholder="请选择城市"
-                                    v-on:change="getCity($event)">
+      <el-select size="small" style="width: 100px"
+                 v-if="selectProv!=''"
+                 v-model="selectCity"
+                 placeholder="请选择城市"
+                 v-on:change="getCity($event)">
         <el-option
           v-for="item in citys"
           :label="item.label"
           :value="item.value">
         </el-option>
-      </el-select><br></div>
-      <div id="idcard2"> 身份证号：<el-input  v-model="seller.idcard" style="width: 600px"></el-input><br></div>
-      <div id="phone2"> 手机号：<el-input  v-model="seller.phone" style="width: 600px"></el-input><br></div>
-      <div id="sex2"> 性别：<el-input  v-model="seller.sex" style="width: 600px"></el-input><br></div>
-      <div id="email2">邮箱：<el-input  v-model="seller.email" style="width: 600px"></el-input><br></div>
-    <el-button type="primary" @click="update()">修改</el-button>
+      </el-select>
+      <button @click="xuanze()">选择</button>
+
+
+
   </div>
 </template>
-<style>
-  #user{
-    width:1209.2px;
-    height: 600px;
-    line-height: 20px;
-    text-align: center;
-    font-family: 'Roboto', sans-serif;
-    background:  url("../../static/images/11111.jpg");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
-    background-size: cover;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    color: ivory;
-  }
-  #tital2{
-    text-align: center;
-    margin: 0 auto;
-    font-size: 24px;
-    margin-bottom: 30px;
-    margin-top: 20px;
-  }
-  #sname2{
-    text-align: center;
-    margin: 0 auto;
-  }
 
-  #provice2{
-    text-align: center;
-    margin: 0 auto;
-    margin-top: 15px;
-    margin-left: 33px;
-  }
-  #city2{
-    text-align: center;
-    margin: 0 auto;
-    margin-top: 15px;
-    margin-left: 33px;
-  }
-  #idcard2{
-    text-align: center;
-    margin: 0 auto;
-    margin-top: 15px;
-  }
-  #phone2{
-    text-align: center;
-    margin: 0 auto;
-    margin-top: 15px;
-    margin-left: 16px;
-  }
-  #sex2{
-    text-align: center;
-    margin: 0 auto;
-    margin-top: 15px;
-    margin-left: 31px;
-  }
-  #email2{
-    text-align: center;
-    margin: 0 auto;
-    margin-top: 15px;
-    margin-left: 31px;
-  }
-</style>
 <script>
-  import axios from 'axios'
-  export default{
-    data(){
-      return{
-        seller:{
 
-          sname:'',
-          username:'',
-          password:'',
-          provice:'',
-          city:'',
-          phone:'',
-          idcard:'',
-          sex:'',
-          email:'',
-        },
+  export default {
+
+    data() {
+
+      return {
+
         provs:[{label:"北京市",value:"北京市"},
 
           {label:"天津市",value:"天津市"},
@@ -187,26 +113,25 @@
 
         citys: [],
 
-      }
-    },
-    mounted(){
+        selectProv: '',
 
-      var sid=this.$route.params.sid
-      var url='api/findBySellerId'
-      axios.post(url,{sid:sid}).then(res=>{
-        if (res.data!=null){
-          this.seller=res.data;
-        }
-      })
+        selectCity: ''
+
+      }
+
     },
-    methods:{
+
+    methods: {
+
+      /*二级联动选择地区*/
+
       getProv: function (prov) {
 
         var tempCity=[];
 
         this.citys=[];
 
-        this.seller.city='';
+        this.selectCity='';
 
         var allCity=[{
 
@@ -2494,14 +2419,25 @@
       },
       getCity: function (city) {
         console.log(city);
-        console.log(this.seller.city)
+        console.log(this.selectCity)
       },
-      update:function () {
-        var url='api/updateSeller'
-        axios.post(url,this.seller).then(res=>{
-          this.$router.push({name:'userinfo'})
-        })
-      },
-    }
+      xuanze:function () {
+        alert(this.selectCity)
+        alert(this.selectProv)
+      }
+
+
+
+    },
+
+    mounted: function () {
+
+
+
+    },
+
+
+
   }
+
 </script>
