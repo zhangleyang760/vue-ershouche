@@ -1,19 +1,17 @@
 <template>
   <div id="app">
-    <div>
-      <div id="head">
-        <div id="headin">
-          <div class="headtap"><router-link to="/">首页</router-link></div>
-          <div   v-if="showname" class="headtap"><router-link to="/userlogin">登录</router-link>|<router-link to="/userReg">注册</router-link></div>
-          <div   v-if="!showname" class="headtap"><a>{{names}}</a> |<a @click="loginout()" >注销</a></div>
-          <div class="headtap"><a @click="userinfo">个人中心</a></div>
-          <div class="headtap"><a >商家中心</a> </div>
-          <div class="headtap"><a >帮助中心</a> </div>
-          <div class="headtap"><a >联系客服</a> </div>
-          <div class="headtap"><a >网站导航</a> </div>
-          <div class="headtap"><router-link to="/adminlogin">后台管理</router-link> </div>
-          <div class="headtap"><router-link to="/realinfo">实名认证</router-link></div>
-        </div>
+    <div id="head">
+      <div id="headin">
+        <div class="headtap"><router-link to="/">首页</router-link></div>
+        <div  v-if="showname" class="headtap"><router-link to="/userlogin">登录</router-link>|<router-link to="/userReg">注册</router-link></div>
+        <div  v-if="!showname" class="headtap"><a>{{names}}</a> |<a @click="loginout()" >注销</a></div>
+        <div class="headtap"><a @click="userinfo">个人中心</a></div>
+        <div class="headtap"><a >商家中心</a> </div>
+        <div class="headtap"><a >帮助中心</a> </div>
+        <div class="headtap"><a >联系客服</a> </div>
+        <div class="headtap"><a >网站导航</a> </div>
+        <div class="headtap"><router-link to="/adminlogin">后台管理</router-link> </div>
+        <div class="headtap"><router-link to="/realinfo">实名认证</router-link></div>
       </div>
     </div>
     <router-view/>
@@ -89,10 +87,8 @@ export default {
     font-weight: inherit;
   }
   a{
+    text-decoration:none;
     cursor: pointer;
-  }
-  #app{
-
   }
   #head{
     height: 36px;
@@ -102,7 +98,8 @@ export default {
     border-bottom: 1px solid #ddd;
   }
   #headin{
-    margin-left: 600px;
+    overflow: hidden;
+    margin-left: 834px;
   }
   .headtap{
     float: left;
@@ -111,7 +108,6 @@ export default {
   #headin a{
     line-height: 36px;
     color: #666;
-    text-decoration:none;
     font-size: 12px;
   }
   #headin a:hover{
