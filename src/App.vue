@@ -4,7 +4,6 @@
       <div id="head">
         <div id="headin">
           <div class="headtap"><router-link to="/">首页</router-link></div>
-
           <div class="headtap"><router-link to="/userlogin">登录</router-link>|<router-link to="/userReg">注册</router-link> </div>
           <div class="headtap"><a @click="userinfo">个人中心</a></div>
           <div class="headtap"><a >商家中心</a> </div>
