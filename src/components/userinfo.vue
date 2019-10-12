@@ -1,17 +1,15 @@
 <template>
   <div id="userinfo_contain" align="center">
+          <div id="lab1"><h3>个人信息<i class="el-icon-s-custom"></i></h3></div>
+          <div id="username" class="ROW"><i class="el-icon-user"></i>姓名：<span v-text="seller.sname"></span></div>
+          <div id="userphone" class="ROW"><i class="el-icon-phone"></i>手机号：<span v-text="seller.phone"></span></div>
+          <div id="provice" class="ROW"><i class="el-icon-location"></i>省份:<span v-text="seller.provice"></span></div>
+          <div id="city" class="ROW"><i class="el-icon-place"></i>城市:<span v-text="seller.city"></span></div>
+          <div id="idcard" class="ROW"><i class="el-icon-s-order"></i>身份证号:<span v-text="seller.idcard"></span></div>
+          <div id="sex" class="ROW"><i class="el-icon-male"></i>性别:<span v-text="seller.sex"></span></div>
+          <div id="email" class="ROW"><i class="el-icon-message"></i>邮箱:<span v-text="seller.email"></span></div>
+           <el-button id="btn" type="primary" @click="update(seller.sid)"><i class="el-icon-edit"></i>修改个人信息</el-button>
 
-        <div id="L_lay1">
-          <div id="lab1"><h3>个人信息</h3></div>
-          <div id="username" class="ROW">姓名：<span v-text="seller.sname"></span></div>
-          <div id="userphone" class="ROW">手机号：<span v-text="seller.phone"></span></div>
-          <div id="provice" class="ROW">省份:<span v-text="seller.provice"></span></div>
-          <div id="city" class="ROW">城市:<span v-text="seller.city"></span></div>
-          <div id="idcard" class="ROW">身份证号:<span v-text="seller.idcard"></span></div>
-          <div id="sex" class="ROW">性别:<span v-text="seller.sex"></span></div>
-          <div id="email" class="ROW">邮箱:<span v-text="seller.email"></span></div>
-        </div>
-    <el-button id="btn" type="primary" @click="update(seller.sid)">修改个人信息</el-button>
       <!--<div id="right">-->
         <!--<div id="headline2" align="center">我的收藏</div>-->
         <!--<div id="R_column1" class="R">-->
@@ -44,6 +42,7 @@
 <script>
   import axios from "axios"
   export default{
+    components: {},
     data(){
       return{
         seller:{
@@ -92,10 +91,11 @@
   }
   #lab1{
     width:400px;
-    height:50px;
+    height:80px;
     font-family: "Microsoft YaHei";
     font-size: 24px;
     text-align: center;
+
 
   }
   .ROW{
