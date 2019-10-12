@@ -1,48 +1,91 @@
 <template>
-  <div>
+  <div id="realinfo">
     <div class="container w3layouts agileits">
-    <h1>实名认证</h1><br>
-    <el-form :inline="true" :model="user" class="demo-form-inline">
-      <el-form-item label="真实姓名：">
-        <el-input v-model="user.sname" placeholder="请输入您的真实姓名"></el-input>
-      </el-form-item><br>
-      <el-form-item label="身份证号：">
-        <el-input v-model="user.idcard" placeholder="请输入您的身份证号"></el-input>
-      </el-form-item><br>
-      <el-form-item label="性别：">
-        <el-input v-model="user.sex" placeholder="请输入您的性别：男或女"></el-input>
-      </el-form-item><br>
-      <el-select size="small" style="width: 100px"
-                 v-model="user.provice"
-                 placeholder="请选择省份"
-                 v-on:change="getProv($event)">
-        <el-option
-          v-for="item in provs"
-          :label="item.label"
-          :value="item.value">
-        </el-option>
-      </el-select>
+      <h1>实名认证</h1><br>
+      <form :inline="true" :model="user" class="demo-form-inline">
+        真实地址：<el-select  size="small" style="width: 100px"
+                    v-model="user.provice"
+                    placeholder="请选择省份"
+                    v-on:change="getProv($event)">
+          <el-option
+            v-for="item in provs"
+            :label="item.label"
+            :value="item.value">
+          </el-option>
+        </el-select>
 
-      <el-select size="small" style="width: 100px"
+        <el-select size="small" style="width: 100px"
 
-                 v-model="user.city"
-                 placeholder="请选择城市"
-                 v-on:change="getCity($event)">
-        <el-option
-          v-for="item in citys"
-          :label="item.label"
-          :value="item.value">
-        </el-option>
-      </el-select>
-      <el-form-item label="手机号：">
-        <el-input v-model="user.phone" placeholder="请输入手机号"></el-input>
-      </el-form-item><br>
-      <el-form-item>
-        <el-button type="primary" @click="csubmit()">买家提交</el-button>
-        <el-button type="primary" @click="ssubmit()">卖家提交</el-button>
-      </el-form-item>
-    </el-form>
+                   v-model="user.city"
+                   placeholder="请选择城市"
+                   v-on:change="getCity($event)">
+          <el-option
+            v-for="item in citys"
+            :label="item.label"
+            :value="item.value">
+          </el-option>
+        </el-select>
+        <input v-model="user.sname" type="text" placeholder="请输入您的真实姓名">
+        <input v-model="user.idcard" type="text" placeholder="请输入您的身份证号">
+        <input v-model="user.sex"  type="text" placeholder="请输入您的性别">
+        <input v-model="user.phone" type="text" placeholder="请输入手机号" show-password>
+        <div class="send-button w3layouts agileits">
+          <form>
+            <input type="submit"  @click="csubmit()" value="买家提交 ">
+            <input type="submit" @click="ssubmit()" value="卖家提交">
+          </form>
+        </div>
+
+      </form>
     </div>
+    <!--<div class="footer w3layouts agileits">-->
+      <!--<p>Copyright &copy; More Templates</p>-->
+    <!--</div>-->
+    <!--<div class="container w3layouts agileits">-->
+
+    <!--<el-form :inline="true" :model="user" class="demo-form-inline">-->
+      <!--<el-form-item label="真实姓名：">-->
+        <!--<el-input v-model="user.sname" placeholder="请输入您的真实姓名"></el-input>-->
+      <!--</el-form-item><br>-->
+      <!--<el-form-item label="身份证号：">-->
+        <!--<el-input v-model="user.idcard" placeholder="请输入您的身份证号"></el-input>-->
+      <!--</el-form-item><br>-->
+      <!--<el-form-item label="性别：">-->
+        <!--<el-input v-model="user.sex" placeholder="请输入您的性别：男或女"></el-input>-->
+      <!--</el-form-item><br>-->
+      <!--<el-form-item label="地址：">-->
+      <!--<el-select  size="small" style="width: 100px"-->
+                 <!--v-model="user.provice"-->
+                 <!--placeholder="请选择省份"-->
+                 <!--v-on:change="getProv($event)">-->
+        <!--<el-option-->
+          <!--v-for="item in provs"-->
+          <!--:label="item.label"-->
+          <!--:value="item.value">-->
+        <!--</el-option>-->
+      <!--</el-select>-->
+
+      <!--<el-select size="small" style="width: 100px"-->
+
+                 <!--v-model="user.city"-->
+                 <!--placeholder="请选择城市"-->
+                 <!--v-on:change="getCity($event)">-->
+        <!--<el-option-->
+          <!--v-for="item in citys"-->
+          <!--:label="item.label"-->
+          <!--:value="item.value">-->
+        <!--</el-option>-->
+      <!--</el-select>-->
+      <!--</el-form-item><br>-->
+      <!--<el-form-item label="手机号：">-->
+        <!--<el-input v-model="user.phone" placeholder="请输入手机号"></el-input>-->
+      <!--</el-form-item><br>-->
+      <!--<el-form-item>-->
+        <!--<el-button type="primary" @click="csubmit()">买家提交</el-button>-->
+        <!--<el-button type="primary" @click="ssubmit()">卖家提交</el-button>-->
+      <!--</el-form-item>-->
+    <!--</el-form>-->
+    <!--</div>-->
     <div class="footer w3layouts agileits">
       <p>Copyright &copy; More Templates</p>
     </div>
@@ -2493,7 +2536,7 @@
 
   /*-- Index-Page-Styling --*/
 
-  body {
+ #realinfo{
     font-family: 'Roboto', sans-serif;
     text-align: center;
     background: url("http://pyl6emnsf.bkt.clouddn.com/background1.jpg");
@@ -2528,7 +2571,7 @@
   }
 
   .container {
-    width: 50%;
+    width: 25%;
     margin: 0 auto;
     padding: 40px;
     background-color: rgba(10, 10, 10, 0.77);

@@ -1,4 +1,4 @@
-<template>
+<template xmlns="http://www.w3.org/1999/html">
   <div id="app">
     <div>
       <div id="head">
@@ -12,7 +12,7 @@
           <div class="headtap"><a >联系客服</a> </div>
           <div class="headtap"><a >网站导航</a> </div>
           <div class="headtap"><router-link to="/adminlogin">后台管理</router-link> </div>
-          <div class="headtap"><router-link to="/realinfo">实名认证</router-link></div>
+          <div class="headtap"><a  @click="realinfo">实名认证</a></div>
         </div>
       </div>
     </div>
@@ -54,7 +54,19 @@ export default {
           this.$router.push({name: 'userlogin'});
         }
       })
-    },showUser:function () {
+    },
+  realinfo: function () {
+
+    var url = '/api/checkLogin'
+    axios.get(url).then(res => {
+
+      if (res.data != null && res.data =="成功") {
+        this.$router.push({name: 'realinfo'});
+      }else if (res.data != null && res.data =="未登录"){
+        this.$router.push({name: 'userlogin'});
+      }
+    })
+  },showUser:function () {
       var url="/api/getUserSession";
       var _this=this;
       axios.post(url).then(res=>{
