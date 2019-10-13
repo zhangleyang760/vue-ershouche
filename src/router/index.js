@@ -17,7 +17,7 @@ import upload from "@/components/upload"
 import detail from "@/components/detail"
 import ceshi from "@/components/ceshi"
 import realinfo from "@/components/realinfo"
-// import userupdate from "@/components/userupdate"
+import userupdate from "@/components/userupdate"
 Vue.use(Router)
 
 export default new Router({
@@ -97,6 +97,10 @@ export default new Router({
       path:'/realinfo',
       name:'realinfo',
       component:realinfo
+    },{
+      path:'/userupdate',
+      name:'userupdate',
+      component:userupdate
     },
 
   ]

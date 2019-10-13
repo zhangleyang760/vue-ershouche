@@ -2,14 +2,15 @@
 
 
     <div id="user">
-      <div id="tital2"><h1>用户信息修改</h1></div>
+      <div id="tital2"><h1>买家信息修改</h1></div>
 
-      <div id="sname2"> 用户姓名：<el-input  v-model="seller.sname" style="width: 600px"></el-input><br></div>
-
-      <div id="provice2"> 省份：<el-select size="small" style="width: 600px" style="height: 40px"
-                                       v-model="seller.provice"
-                                       placeholder="请选择省份"
-                                       v-on:change="getProv($event)">
+      <div id="sname2"> 买家姓名：<el-input  v-model="seller.sname" style="width: 600px"></el-input><br></div>
+      <div id="username2">买家账号：<el-input  v-model="seller.username" style="width: 600px"></el-input><br></div>
+      <div id="password2">买家密码：<el-input  v-model="seller.password" style="width: 600px"></el-input><br></div>
+      <div id="provice2"> 省份：<el-select size="small" style="width: 600px"
+                                        v-model="seller.provice"
+                                        placeholder="请选择省份"
+                                        v-on:change="getProv($event)">
         <el-option
           v-for="item in provs"
           :label="item.label"
@@ -17,11 +18,11 @@
         </el-option>
       </el-select><br></div>
 
-      <div id="city2"> 城市：<el-select size="small" style="width: 600px"
+      <div id="city1"> 城市：<el-select size="small" style="width: 600px"
 
-                                    v-model="seller.city"
-                                    placeholder="请选择城市"
-                                    v-on:change="getCity($event)">
+                                     v-model="seller.city"
+                                     placeholder="请选择城市"
+                                     v-on:change="getCity($event)">
         <el-option
           v-for="item in citys"
           :label="item.label"
@@ -31,7 +32,7 @@
       <div id="idcard2"> 身份证号：<el-input  v-model="seller.idcard" style="width: 600px"></el-input><br></div>
       <div id="phone2"> 手机号：<el-input  v-model="seller.phone" style="width: 600px"></el-input><br></div>
       <div id="sex2"> 性别：<el-input  v-model="seller.sex" style="width: 600px"></el-input><br></div>
-      <div id="email2">邮箱：<el-input  v-model="seller.email" style="width: 600px"></el-input><br></div>
+      <div id="email1">邮箱：<el-input  v-model="seller.email" style="width: 600px"></el-input><br></div>
     <el-button type="primary" @click="update()">修改</el-button>
   </div>
 </template>

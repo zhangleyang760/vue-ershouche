@@ -1,9 +1,9 @@
 <template>
 
   <div id="customer">
-    <div id="tou">
+
     <h1>买家信息管理</h1><el-button type="success" round @click="tohoutai1" size="small">卖家管理</el-button>
-    <el-button type="success" round @click="tohoutai3" size="small">商品管理</el-button></div>
+    <el-button type="success" round @click="tohoutai3" size="small">商品管理</el-button>
     <el-table
       :data="seller"
       stripe
@@ -67,7 +67,7 @@
 <style scoped>
   #customer{
     width:100%;
-    height: 600px;
+    height: 100%;
     line-height: 20px;
     text-align: center;
     font-family: 'Roboto', sans-serif;

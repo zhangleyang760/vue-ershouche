@@ -1,15 +1,15 @@
 <template>
-  <div>
+  <div id="car1">
     <h1>商品信息修改</h1>
 <form>
-    车：<el-input  v-model="car.cname" ></el-input>
-    品牌：<el-input  v-model="car.brand" ></el-input>
-    类型：<el-input  v-model="car.ctype" ></el-input>
-    价格：<el-input  v-model="car.price" ></el-input>
-    车龄：<el-input  v-model="car.cyear" ></el-input>
-    里程：<el-input  v-model="car.mileage" ></el-input>
-    颜色：<el-input  v-model="car.color" ></el-input>
-    描述：<el-input  v-model="car.miaoshu"></el-input>
+   <div id="car2"> 车：<el-input  v-model="car.cname"  style="width: 600px"></el-input></div>
+  <div id="car2"> 品牌：<el-input  v-model="car.brand"  style="width: 600px"></el-input></div>
+    <div id="car2"> 类型：<el-input  v-model="car.ctype"  style="width: 600px"></el-input></div>
+      <div id="car2"> 价格：<el-input  v-model="car.price"  style="width: 600px"></el-input></div>
+        <div id="car2">车龄：<el-input  v-model="car.cyear"  style="width: 600px"></el-input></div>
+          <div id="car2">里程：<el-input  v-model="car.mileage"  style="width: 600px"></el-input></div>
+            <div id="car2"> 颜色：<el-input  v-model="car.color"  style="width: 600px"></el-input></div>
+              <div id="car2"> 描述：<el-input  v-model="car.miaoshu" style="width: 600px"></el-input></div>
 
    更换展示图： <el-upload
     class="avatar-uploader"
@@ -27,7 +27,29 @@
 </form>
   </div>
 </template>
-
+<style scoped>
+  #car1{
+    width:100%;
+    height: 100%;
+    line-height: 20px;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    background:  url("../../static/images/11111.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    color: ivory;
+  }
+  #car2{
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 15px;
+  }
+</style>
 
 <script>
   import axios from 'axios'
