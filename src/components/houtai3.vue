@@ -1,9 +1,9 @@
 <template>
   <div id="car">
-    <div id="tou">
+
       <h1>商品管理</h1>
     <el-button type="success" round @click="tohoutai2" size="small">买家管理</el-button>
-    <el-button type="success" round @click="tohoutai1" size="small">卖家管理</el-button></div>
+    <el-button type="success" round @click="tohoutai1" size="small">卖家管理</el-button>
     <el-table
       :data="car"
       stripe
@@ -78,6 +78,24 @@
     </el-pagination>
   </div>
 </template>
+<style scoped>
+  #car{
+    width:100%;
+    height: 100%;
+    line-height: 20px;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    background:  url("../../static/images/11111.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    color: ivory;
+  }
+</style>
 <style scoped>
   #car{
     width:100%;

@@ -37,7 +37,7 @@
 <style scoped>
   #seller{
     width:100%;
-    height: 600px;
+    height: 100%;
     line-height: 20px;
     text-align: center;
     font-family: 'Roboto', sans-serif;
