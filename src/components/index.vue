@@ -10,6 +10,9 @@
         </div>
       <div id="main">
         <div id="filter">
+          <div id="ad">
+            <li v-for="ad in adList"><a :href="ad.href"><img :src="ad.img"/></a></li>
+          </div>
           <dl>
             <dt>类型:</dt>
             <dd >
@@ -62,6 +65,13 @@
             :total="this.total">
           </el-pagination>
         </div>
+        <div id="clickList">
+          <div class="click" v-for="car in clickList">
+              <img :src="car.pic" height="" width="180px" @click="detail(car.cid)"/>
+            <div v-text="car.cname" class="clickName" @click="detail(car.cid)"></div>
+            <div  class="clickCount" @click="detail(car.cid)">点击量：<span v-text="car.click"></span></div>
+          </div>
+        </div>
       </div>
     </div>
 </template>
@@ -72,6 +82,11 @@
       components: {ElInput},
       data(){
             return {
+                adList:[{href:'https://faw-vw.58.com/?PGTID=0d30001d-0000-1866-91c3-ddd7eea6be6f&ClickID=31',img:'https://pic7.58cdn.com.cn/brandpic/car/n_v2df13a22a7cc242f4917476e6b5b21a09_9ab6ed75cbd11946.png'},
+                  {href:'https://jixinche.58.com/?PGTID=0d30001d-0000-1866-91c3-ddd7eea6be6f&ClickID=32',img:'https://pic7.58cdn.com.cn/brandpic/car/n_v2a855ae91a16244c4a94332512aaf8592_2679c595b1b763d6.png'},
+                  {href: 'https://audi.58che.com/?PGTID=0d30001d-0000-1866-91c3-ddd7eea6be6f&ClickID=33',img:'https://pic7.58cdn.com.cn/brandpic/car/n_v2f06c49cc87084137b64d68da7f345873_3ebc8f66449a9118.png'},
+                  {href: 'https://topic-m.58che.com/topic/3463topic.html?mz_ca=2125045&mz_sp=7PU3P&mz_sb=1',img:'https://pic7.58cdn.com.cn/brandpic/car/n_v2b4f7f5fb455d481ca63842ab3c5b7bc8_8a55ecc2d58b97b3.png'},
+                   ],
                 typeOn:'不限',
                 brandOn:'不限',
                 priceOn:'不限',
@@ -79,13 +94,13 @@
                 total:'',
                 param:{
                   currentPage:1,
-                  size:5,
+                  size:10,
                 },
                 typeList:[
                   '不限', '轿车', '越野车','MPV','跑车','面包车','皮卡','新能源','工程车','货车','客车','三轮机动车','老年代步车'
                 ],
                 brandList:['不限','丰田','吉普','长城','现代','本田','宝马','三菱','路虎',
-                  '起亚','奥迪','奔驰','北汽制造','大众','日产','一汽'],
+                  '起亚','奥迪','奔驰','北汽制造','大众','日产','一汽','吉利','雪铁龙'],
                 priceList:[{name:'不限',val:[]},{name:'六万元以内',val:[0,6]},{name:'6-8万元',val:[6,8]},
                   {name:'8-10万元',val:[8,10]},{name:'10-20万元',val:[10,20]},{name:'20-30万元',val:[20,30]},
                   {name:'30万元以上',val:[30,1000]}],
@@ -132,14 +147,13 @@
                     cyear:2017,
                     pic:'',
                   }
-                ]
-
-
+                ],
+                clickList:[]
             }
         },
         mounted(){
             this.findAll();
-
+            this.getClickList();
         },
         methods: {
 
@@ -158,6 +172,11 @@
                   this.carList=res.data.cars;
                   this.total=res.data.total;
               })
+          },
+          getClickList:function () {
+            axios.get('/api/findByClick/'+this.param.size).then(res=>{
+                this.clickList=res.data
+            })
           },
           changePage:function (page) {
             this.param.currentPage=page;
@@ -225,7 +244,10 @@
               if (res.data != null && res.data =="未登录"){
                 this.$router.push({name: 'userlogin'});
               }else {
-                this.$router.push({name:'detail',params:{cid:id}});
+                  axios.get('/api/addClick/'+id).then(res=>{
+                    this.$router.push({name:'detail',params:{cid:id}});
+                  })
+
               }
             });
 
@@ -360,6 +382,27 @@
     margin-left: 150px;
     background-color: white;
   }
+  #filter #ad{
+     position: absolute;
+     width: 200px;
+     left: 1153px;
+     height:202px;
+     text-align: center;
+    border-left: 1px solid #eee;
+   }
+  #filter #ad li{
+    list-style: none;
+    display: list-item;
+    text-align: -webkit-match-parent;
+  }
+  #filter #ad li a{
+    display: block;
+    width: 123px;
+    height: 44px;
+    box-sizing: border-box;
+    margin: 0 auto 9px;
+  }
+
   #filter dl {
     margin-bottom: 8px;
     height: 33.6px;
@@ -402,13 +445,13 @@
     width: 40px;
   }
   #carList{
-    padding-top: 20px;
-    padding-left: 20px;
-    width: 1183px;
+    padding: 20px;
+    width: 950px;
     margin-left: 150px;
     margin-top: 20px;
     background-color: white;
   }
+
   #carList .car{
     margin-right: 0;
     height: 150px;
@@ -421,7 +464,6 @@
   #carList .car:hover{
     background-color:#FCFCFC ;
   }
-
   .car .brandAndName{
     position: absolute;
     left: 23%;
@@ -463,6 +505,39 @@
   }
   .car img{
     position: absolute;
+    cursor: pointer;
+  }
+  #clickList{
+    position: absolute;
+    left: 1153px;
+    top: 417px;
+    padding: 20px 10px 50px 10px;
+    width: 180px;
+    background-color: white;
+  }
+  #clickList .click{
+    height: 150px;
+    padding: 15px 0 15px 0;
+    border-bottom: 1px solid #f2f2f2;
+  }
+  #clickList .click img{
+    cursor: pointer;
+  }
+  #clickList .click .clickName{
+    cursor: pointer;
+    font-weight: 400;
+    font-size: 15px;
+    overflow: hidden;
+    height: 21px;
+    width: 180px;
+
+  }
+  #clickList .click .clickCount{
+    text-align: center;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: "Adobe 黑体 Std R";
+    color: #fc4e28;
   }
 
 </style>

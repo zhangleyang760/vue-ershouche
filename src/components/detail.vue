@@ -2,7 +2,7 @@
     <div id="detail">
       <div id="headdiv">
         <div id="logo"><img src="http://pyl6emnsf.bkt.clouddn.com/logo.jpg"/></div>
-        <div id="post"><a href="">免费发布信息</a></div>
+        <div id="post"><a @click="upload">免费发布信息</a></div>
       </div>
       <div id="main">
         <span id="carName" v-text="this.car.cname"></span>
@@ -40,16 +40,7 @@
             </div>
           </div>
         </div>
-        <el-popover
-          placement="right"
-          width="400"
-          trigger="click">
-          <div style="width: 500px;height: 50px">
-            12222222
-          </div>
-          <el-button slot="reference">click 激活</el-button>
-        </el-popover>
-        <div id="tel">
+        <div id="tel" @click="showTel">
           <i class="el-icon-phone-outline" ></i><span>查看电话号码</span>
         </div>
         <div id="sellerInfo">
@@ -103,7 +94,29 @@
                     this.seller=res.data.seller;
                     this.pics=res.data.pics;
                 })
-            }
+            },
+          upload:function () {
+            var url = '/api/checkLogin'
+            axios.get(url).then(res => {
+
+              if (res.data != null && res.data =="成功") {
+                this.$router.push({name: 'upload'});
+              }else if (res.data != null && res.data =="未登录"){
+                this.$router.push({name: 'userlogin'});
+              }
+            })
+          },
+          showTel:function () {
+              this.open('该商家电话号码为：'+this.seller.phone);
+          },
+          open(msg) {
+            this.$alert(msg, {
+              confirmButtonText: '确定',
+              callback: action => {
+
+              }
+            });
+          }
 
         }
     }
