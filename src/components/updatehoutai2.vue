@@ -3,8 +3,8 @@
     <div id="tital1"><h1>买家信息修改</h1></div>
 
     <div id="sname1"> 买家姓名：<el-input  v-model="seller.sname" style="width: 600px"></el-input><br></div>
-    <div id="username1">买家账号：<el-input  v-model="seller.username" style="width: 600px"></el-input><br></div>
-    <div id="password1">买家密码：<el-input  v-model="seller.password" style="width: 600px"></el-input><br></div>
+    <div id="username1">买家账号：<el-input  v-model="seller.username" style="width: 600px"  :disabled="true"></el-input><br></div>
+    <div id="password1">买家密码：<el-input  v-model="seller.password" style="width: 600px"  :disabled="true"></el-input><br></div>
     <div id="provice1"> 省份：<el-select size="small" style="width: 600px"
                                      v-model="seller.provice"
                                      placeholder="请选择省份"

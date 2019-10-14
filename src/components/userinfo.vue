@@ -74,7 +74,7 @@
     }
   }
 </script>
-<style>
+<style scoped>
 
   #userinfo_contain{
     background: url("../../static/images/info.jpg");
